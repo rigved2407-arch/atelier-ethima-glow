@@ -78,6 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Lab-grown diamond jewellery, made around you." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ethima — Personalised Fine Jewellery" },
+      { name: "twitter:description", content: "Lab-grown diamond jewellery, made around you." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/aeae7b24-0b6e-4870-b62d-a6513d1a3c35/id-preview-86a9c57c--2180bb17-54c4-42d2-8948-004e96ade63a.lovable.app-1778411892962.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/aeae7b24-0b6e-4870-b62d-a6513d1a3c35/id-preview-86a9c57c--2180bb17-54c4-42d2-8948-004e96ade63a.lovable.app-1778411892962.png" },
     ],
     links: [
       {
