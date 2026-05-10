@@ -7,8 +7,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-10">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <span className="font-serif text-3xl text-ivory">ethima</span>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-ivory/70">
+            <span className="font-serif text-4xl italic text-ivory">ethima</span>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-ivory/70 font-light">
               Personalised fine jewellery crafted with lab-grown diamonds.
             </p>
             <div className="mt-6 flex items-center gap-4 text-champagne/80">

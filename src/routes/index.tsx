@@ -50,32 +50,33 @@ function Hero() {
 
       <div className="mx-auto flex min-h-[92vh] max-w-[1400px] items-center px-6 pt-32 pb-24 lg:px-10">
         <div className="max-w-2xl">
-          <p className="eyebrow">Personalised. Intentional. Yours.</p>
-          <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-ivory md:text-6xl lg:text-7xl">
-            Designed around you,<br />not a catalogue.
+          <p className="eyebrow animate-fade-up">Personalised. Intentional. Yours.</p>
+          <h1 className="mt-7 font-serif text-[2.75rem] leading-[1.02] text-ivory md:text-6xl lg:text-[5rem] animate-fade-up delay-150">
+            <span className="italic font-light">Designed</span> around you,<br />
+            <span className="italic font-light">not</span> a catalogue.
           </h1>
-          <div className="mt-8 h-px w-16 bg-champagne/60" />
-          <p className="mt-8 max-w-md text-base leading-relaxed text-ivory/80">
+          <div className="mt-9 h-px w-16 bg-champagne/60 animate-fade-up delay-300" />
+          <p className="mt-8 max-w-md text-base leading-relaxed text-ivory/80 font-light animate-fade-up delay-300">
             Modern, minimal and meaningful jewellery crafted with lab-grown diamonds.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-4 animate-fade-up delay-500">
             <Link
               to="/customise"
-              className="group inline-flex items-center gap-3 bg-champagne px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-primary-foreground transition-all hover:bg-ivory"
+              className="group btn-glow inline-flex items-center gap-3 bg-champagne px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-primary-foreground transition-all hover:bg-ivory"
             >
               Start Your Piece
             </Link>
             <Link
               to="/consultation"
-              className="inline-flex items-center gap-3 border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
+              className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
             >
               Book Your Consultation
             </Link>
           </div>
 
-          <Link to="/collections" className="mt-10 inline-flex items-center gap-3 text-[0.7rem] tracking-[0.28em] uppercase text-champagne hover:text-ivory">
-            Explore / Shop the ethima edit <ArrowRight className="h-4 w-4" />
+          <Link to="/collections" className="link-underline mt-12 inline-flex items-center gap-3 text-[0.7rem] tracking-[0.32em] uppercase text-champagne animate-fade-up delay-500">
+            Explore the ethima Edit <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

@@ -32,8 +32,8 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 lg:px-10">
         <Link to="/" className="group flex flex-col leading-none">
-          <span className="font-serif text-3xl tracking-tight text-ivory">ethima</span>
-          <span className="mt-1 text-[0.55rem] tracking-[0.32em] text-champagne uppercase">
+          <span className="font-serif text-[2rem] italic tracking-[-0.01em] text-ivory">ethima</span>
+          <span className="mt-1.5 text-[0.55rem] tracking-[0.34em] text-champagne uppercase font-light">
             Personalised Fine Jewellery
           </span>
         </Link>
