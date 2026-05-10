@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode, type ComponentType } from "react";
 import { PageShell } from "@/components/page-shell";
 import { CalendarDays, Clock, User, Heart, Gem } from "lucide-react";
 
@@ -105,7 +105,7 @@ function Consultation() {
 
 const inputCls = "w-full border border-input bg-transparent px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-champagne outline-none";
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>
       <p className="eyebrow mb-3">{label}</p>
@@ -114,7 +114,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button
       type="button"
@@ -126,7 +126,7 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
   );
 }
 
-function Perk({ icon: Icon, t, d }: { icon: React.ComponentType<{ className?: string }>; t: string; d: string }) {
+function Perk({ icon: Icon, t, d }: { icon: ComponentType<{ className?: string }>; t: string; d: string }) {
   return (
     <div className="flex gap-4">
       <Icon className="mt-1 h-5 w-5 shrink-0 text-champagne" />

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode, type ComponentType } from "react";
 import { PageShell } from "@/components/page-shell";
 import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 

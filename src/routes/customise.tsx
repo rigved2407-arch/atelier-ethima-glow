@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode, type ComponentType } from "react";
 import { PageShell } from "@/components/page-shell";
 
 export const Route = createFileRoute("/customise")({
@@ -99,7 +99,7 @@ function Customise() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>
       <p className="eyebrow mb-4">{label}</p>
@@ -108,7 +108,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-function Option({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+function Option({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button
       type="button"
