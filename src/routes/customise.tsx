@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type ReactNode, type ComponentType } from "react";
 import { PageShell } from "@/components/page-shell";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/customise")({
   head: () => ({
@@ -16,15 +19,34 @@ const METALS = ["925 Sterling Silver", "10KT Yellow Gold", "10KT White Gold", "1
 const SHAPES = ["Round", "Oval", "Pear", "Emerald", "Cushion", "Marquise"];
 
 function Customise() {
+  const { user } = useAuth();
   const [metal, setMetal] = useState(METALS[1]);
   const [shape, setShape] = useState(SHAPES[0]);
   const [size, setSize] = useState("US 6");
   const [engraving, setEngraving] = useState("");
   const [notes, setNotes] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    const { error } = await supabase.from("customisation_requests").insert({
+      user_id: user?.id ?? null,
+      full_name: (user?.user_metadata?.display_name as string | undefined) ?? null,
+      email: user?.email ?? null,
+      metal, diamond_shape: shape, size,
+      engraving: engraving || null,
+      notes: notes || null,
+    });
+    setBusy(false);
+    if (error) toast.error(error.message);
+    else { setSent(true); toast.success("Request sent — we'll be in touch."); }
+  }
 
   return (
     <PageShell eyebrow="Personalise Your Piece" title="Designed around you." intro="Every ethima piece begins with you. Choose your metal, your stone, and the small details that make it yours.">
-      <form className="grid gap-12 lg:grid-cols-2" onSubmit={(e) => { e.preventDefault(); }}>
+      <form className="grid gap-12 lg:grid-cols-2" onSubmit={submit}>
         <div className="space-y-10">
           <Field label="Metal">
             <div className="grid grid-cols-2 gap-3">
