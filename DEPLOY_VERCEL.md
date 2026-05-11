@@ -15,7 +15,15 @@ Vercel uses the SPA pipeline because Vercel's static hosting can't run the Cloud
    - **Build Command:** `vite build --config vite.spa.config.ts`
    - **Output Directory:** `dist`
    - **Install Command:** `npm install` (or `bun install`)
-4. Click **Deploy**.
+4. Add Environment Variables (Settings → Environment Variables) — **required for backend to work**:
+   - `VITE_SUPABASE_URL` = `https://wkankvywbpazzerhdtud.supabase.co`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY` = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndrYW5rdnl3YnBhenplcmhkdHVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MDc5ODQsImV4cCI6MjA5NDA4Mzk4NH0.iGFUxv7JgM6FTEjpsXGEtDE0SkuI_KeZsHXnvHGUktg`
+   - Apply to all environments (Production, Preview, Development).
+5. Click **Deploy**.
+
+## Backend (Lovable Cloud)
+
+The browser SPA talks directly to Lovable Cloud (managed Postgres + Auth + Storage + serverless functions). Anything that needs to run server-side with secret keys (Stripe, sending emails with private API keys, calling LLMs, webhooks) lives as a serverless function inside Lovable Cloud — your Vercel frontend invokes it; Vercel never holds those secrets.
 
 ## How it works
 
