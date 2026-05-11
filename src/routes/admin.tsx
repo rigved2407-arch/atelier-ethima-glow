@@ -42,7 +42,7 @@ function Admin() {
     const { error } = await supabase.from(table).update({ status }).eq("id", id);
     if (error) toast.error(error.message); else { toast.success("Updated"); refresh(); }
   }
-  async function del(table: string, id: string) {
+  async function del(table: "bookings" | "customisation_requests" | "contact_messages", id: string) {
     if (!confirm("Delete?")) return;
     const { error } = await supabase.from(table).delete().eq("id", id);
     if (error) toast.error(error.message); else { toast.success("Deleted"); refresh(); }
