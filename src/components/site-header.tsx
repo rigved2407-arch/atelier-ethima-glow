@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, User } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 const NAV = [
   { to: "/collections", label: "Collections" },
@@ -57,6 +58,7 @@ export function SiteHeader() {
           >
             Book Consultation
           </Link>
+          <AccountIcon />
           <a
             href="#"
             aria-label="WhatsApp"
@@ -98,5 +100,18 @@ export function SiteHeader() {
         </div>
       )}
     </header>
+  );
+}
+
+function AccountIcon() {
+  const { user } = useAuth();
+  return (
+    <Link
+      to={user ? "/account" : "/auth"}
+      aria-label="Account"
+      className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full border border-champagne/40 text-champagne transition-colors hover:bg-champagne hover:text-primary-foreground"
+    >
+      <User className="h-4 w-4" />
+    </Link>
   );
 }

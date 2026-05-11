@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type ReactNode, type ComponentType } from "react";
+import { useState, type ReactNode, type ComponentType, type FormEvent } from "react";
 import { PageShell } from "@/components/page-shell";
 import { CalendarDays, Clock, User, Heart, Gem } from "lucide-react";
+import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/consultation")({
   head: () => ({
@@ -19,11 +23,42 @@ const TYPES = ["Bespoke Design", "Engagement Ring", "Personalisation", "General 
 const MODES = ["In-studio", "Video Call", "WhatsApp"];
 const TIMES = ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "6:00 PM"];
 
+const schema = z.object({
+  full_name: z.string().trim().min(2).max(80),
+  email: z.string().trim().email().max(255),
+  phone: z.string().trim().max(40).optional().or(z.literal("")),
+  preferred_date: z.string().min(1, "Please choose a date"),
+  vision: z.string().trim().max(2000).optional().or(z.literal("")),
+});
+
 function Consultation() {
+  const { user } = useAuth();
   const [type, setType] = useState(TYPES[0]);
   const [mode, setMode] = useState(MODES[1]);
   const [time, setTime] = useState(TIMES[1]);
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const parsed = schema.safeParse(Object.fromEntries(fd));
+    if (!parsed.success) { toast.error(parsed.error.issues[0].message); return; }
+    setBusy(true);
+    const { error } = await supabase.from("bookings").insert({
+      user_id: user?.id ?? null,
+      full_name: parsed.data.full_name,
+      email: parsed.data.email,
+      phone: parsed.data.phone || null,
+      consultation_type: type,
+      mode,
+      preferred_date: parsed.data.preferred_date,
+      preferred_time: time,
+      vision: parsed.data.vision || null,
+    });
+    setBusy(false);
+    if (error) toast.error(error.message); else setSent(true);
+  }
 
   if (sent) {
     return (
@@ -55,14 +90,14 @@ function Consultation() {
           </div>
         </aside>
 
-        <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="space-y-10">
+        <form onSubmit={submit} className="space-y-10">
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Full Name"><input required className={inputCls} /></Field>
-            <Field label="Email"><input required type="email" className={inputCls} /></Field>
-            <Field label="Phone / WhatsApp"><input className={inputCls} /></Field>
+            <Field label="Full Name"><input name="full_name" required className={inputCls} defaultValue={user?.user_metadata?.display_name ?? ""} /></Field>
+            <Field label="Email"><input name="email" required type="email" className={inputCls} defaultValue={user?.email ?? ""} /></Field>
+            <Field label="Phone / WhatsApp"><input name="phone" className={inputCls} /></Field>
             <Field label="Preferred Date">
               <div className="relative">
-                <input required type="date" className={inputCls} />
+                <input name="preferred_date" required type="date" className={inputCls} />
                 <CalendarDays className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-champagne/70" />
               </div>
             </Field>
@@ -91,11 +126,11 @@ function Consultation() {
           </Field>
 
           <Field label="Tell us about your vision (optional)">
-            <textarea rows={4} placeholder="A piece you've imagined, an occasion, an inspiration..." className={`${inputCls} resize-none`} />
+            <textarea name="vision" rows={4} placeholder="A piece you've imagined, an occasion, an inspiration..." className={`${inputCls} resize-none`} />
           </Field>
 
-          <button type="submit" className="inline-flex items-center bg-champagne px-8 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-primary-foreground hover:bg-ivory transition-all">
-            Confirm Consultation
+          <button type="submit" disabled={busy} className="inline-flex items-center bg-champagne px-8 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-primary-foreground hover:bg-ivory transition-all disabled:opacity-50">
+            {busy ? "Sending..." : "Confirm Consultation"}
           </button>
         </form>
       </div>
