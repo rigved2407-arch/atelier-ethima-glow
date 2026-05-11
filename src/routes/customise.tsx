@@ -108,9 +108,9 @@ function Customise() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <Link to="/consultation" className="inline-flex items-center bg-champagne px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-primary-foreground hover:bg-ivory transition-all">
-              Submit Request
-            </Link>
+            <button type="submit" disabled={busy || sent} className="inline-flex items-center bg-champagne px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-primary-foreground hover:bg-ivory transition-all disabled:opacity-60">
+              {sent ? "Request Sent" : busy ? "Sending..." : "Submit Request"}
+            </button>
             <Link to="/consultation" className="inline-flex items-center border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-ivory hover:bg-champagne hover:text-primary-foreground transition-all">
               Book Consultation
             </Link>
