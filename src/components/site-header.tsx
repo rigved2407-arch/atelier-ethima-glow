@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, User } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 const NAV = [
   { to: "/collections", label: "Collections" },
@@ -57,6 +58,7 @@ export function SiteHeader() {
           >
             Book Consultation
           </Link>
+          <AccountIcon />
           <a
             href="#"
             aria-label="WhatsApp"
