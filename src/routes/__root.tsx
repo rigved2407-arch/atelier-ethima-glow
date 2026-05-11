@@ -112,17 +112,22 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { AuthProvider } from "@/hooks/use-auth";
+import { Toaster } from "sonner";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteHeader />
-      <main className="min-h-screen">
-        <Outlet />
-      </main>
-      <SiteFooter />
+      <AuthProvider>
+        <SiteHeader />
+        <main className="min-h-screen">
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <Toaster theme="dark" position="top-center" />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
