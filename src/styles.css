@@ -44,12 +44,12 @@
 :root {
   --radius: 0.125rem;
 
-  /* Reference-matched palette — deep teal, charcoal, soft champagne, ivory */
+  /* Palette — deep teal, charcoal, warm ivory */
   --teal-deep: oklch(0.20 0.030 200);
   --teal-mid:  oklch(0.26 0.038 200);
   --ivory:     oklch(0.95 0.012 92);
-  --champagne: oklch(0.78 0.072 82);
-  --champagne-deep: oklch(0.66 0.085 78);
+  --champagne: oklch(0.93 0.012 92);
+  --champagne-deep: oklch(0.82 0.014 90);
 
   --background: oklch(0.18 0.026 200);
   --foreground: oklch(0.95 0.012 92);
@@ -59,21 +59,21 @@
   --popover: oklch(0.18 0.026 200);
   --popover-foreground: oklch(0.95 0.012 92);
 
-  --primary: oklch(0.78 0.072 82);
+  --primary: oklch(0.93 0.012 92);
   --primary-foreground: oklch(0.16 0.025 200);
   --secondary: oklch(0.24 0.030 200);
   --secondary-foreground: oklch(0.95 0.012 92);
   --muted: oklch(0.24 0.030 200);
   --muted-foreground: oklch(0.74 0.018 92);
-  --accent: oklch(0.78 0.072 82);
+  --accent: oklch(0.93 0.012 92);
   --accent-foreground: oklch(0.16 0.025 200);
   --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.95 0.012 92 / 10%);
   --input: oklch(0.95 0.012 92 / 16%);
-  --ring: oklch(0.78 0.072 82);
+  --ring: oklch(0.93 0.012 92);
 
-  --chart-1: oklch(0.78 0.072 82);
+  --chart-1: oklch(0.93 0.012 92);
   --chart-2: oklch(0.6 0.05 200);
   --chart-3: oklch(0.5 0.04 200);
   --chart-4: oklch(0.4 0.03 200);
@@ -81,12 +81,12 @@
 
   --sidebar: oklch(0.16 0.025 200);
   --sidebar-foreground: oklch(0.95 0.012 92);
-  --sidebar-primary: oklch(0.78 0.072 82);
+  --sidebar-primary: oklch(0.93 0.012 92);
   --sidebar-primary-foreground: oklch(0.16 0.025 200);
   --sidebar-accent: oklch(0.24 0.030 200);
   --sidebar-accent-foreground: oklch(0.95 0.012 92);
   --sidebar-border: oklch(0.95 0.012 92 / 10%);
-  --sidebar-ring: oklch(0.78 0.072 82);
+  --sidebar-ring: oklch(0.93 0.012 92);
 }
 
 .dark { color-scheme: dark; }
@@ -169,8 +169,8 @@
 
 /* Soft luminous edge for premium buttons */
 .btn-glow {
-  box-shadow: 0 0 0 1px oklch(0.78 0.072 82 / 0.15),
-              0 14px 40px -18px oklch(0.78 0.072 82 / 0.55);
+  box-shadow: 0 0 0 1px oklch(0.93 0.012 92 / 0.15),
+              0 14px 40px -18px oklch(0.93 0.012 92 / 0.40);
 }
 
 @keyframes fade-up {
