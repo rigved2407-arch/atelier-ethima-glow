@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState, useRef } from "react";
 import { Menu, X, MessageCircle, User, ChevronDown } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
+import ethimaLogo from "@/assets/Ethima-logo.jpg";
 
 const COLLECTION_CATEGORIES = [
   { to: "/collections?category=rings", label: "Rings" },
@@ -50,10 +51,16 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 lg:px-10">
+
+        {/* Logo */}
         <Link to="/" className="group flex flex-col leading-none">
-          <span className="font-serif text-[2rem] italic tracking-[-0.01em] text-ivory">ethima</span>
+          <img
+            src={ethimaLogo}
+            alt="ethima"
+            className="h-10 w-auto object-contain"
+          />
           <span className="mt-1.5 text-[0.55rem] tracking-[0.34em] text-champagne uppercase font-light">
-            Personalised Fine Jewellery
+            Elegance within reach
           </span>
         </Link>
 
@@ -78,13 +85,14 @@ export function SiteHeader() {
             {/* Dropdown */}
             <div
               className={`absolute left-1/2 top-full -translate-x-1/2 pt-4 transition-all duration-300 ${
-                collectionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
+                collectionsOpen
+                  ? "opacity-100 translate-y-0 pointer-events-auto"
+                  : "opacity-0 -translate-y-2 pointer-events-none"
               }`}
             >
               <div className="relative border border-border bg-[oklch(0.14_0.022_200/0.96)] backdrop-blur-md py-3 min-w-[160px]">
-                {/* tiny top accent line */}
+                {/* top accent line */}
                 <div className="absolute top-0 left-4 right-4 h-px bg-champagne/30" />
-
                 {COLLECTION_CATEGORIES.map((cat) => (
                   <Link
                     key={cat.to}
