@@ -74,10 +74,6 @@ function Hero() {
               Book Your Consultation
             </Link>
           </div>
-
-          <Link to="/collections" className="link-underline mt-12 inline-flex items-center gap-3 text-[0.7rem] tracking-[0.32em] uppercase text-champagne animate-fade-up delay-500">
-            Explore the ethima Edit <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
       </div>
 
