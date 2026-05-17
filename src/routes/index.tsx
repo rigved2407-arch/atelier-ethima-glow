@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Gem, Sparkles, Leaf, ShieldCheck, MessageSquare, Pencil, Search, Package, ArrowRight, User, Heart } from "lucide-react";
+import { Gem, Sparkles, Leaf, ShieldCheck, MessageSquare, Pencil, Package, ArrowRight, User, Heart } from "lucide-react";
 import heroRing from "@/assets/hero-ring.jpg";
 import catRings from "@/assets/cat-rings.jpg";
 import catPendants from "@/assets/cat-pendants.jpg";
@@ -167,11 +167,10 @@ function Edit() {
 }
 
 const STEPS = [
-  { icon: MessageSquare, n: "01", title: "Consult", text: "Share your ideas and inspiration with us." },
-  { icon: Pencil, n: "02", title: "Design", text: "We create a CAD and refine it together." },
-  { icon: Gem, n: "03", title: "Craft", text: "Expertly handcrafted just for you." },
-  { icon: Search, n: "04", title: "Review", text: "You review, we perfect every detail." },
-  { icon: Package, n: "05", title: "Deliver", text: "Your piece, delivered with care." },
+  { icon: MessageSquare, n: "01", title: "Consult", text: "Share your vision, inspiration, and ideas with us." },
+  { icon: Pencil, n: "02", title: "Design & Approval", text: "We create a CAD render and refine every detail until you love it." },
+  { icon: Gem, n: "03", title: "Craft", text: "Your approved design is expertly handcrafted just for you." },
+  { icon: Package, n: "04", title: "Deliver", text: "Your piece, packaged beautifully and delivered with care." },
 ];
 
 function Process() {
@@ -184,11 +183,11 @@ function Process() {
             <h2 className="mt-4 font-serif text-4xl text-ivory md:text-5xl">Your piece, your way.</h2>
           </div>
 
-          <div className="mt-14 grid grid-cols-2 gap-y-10 sm:grid-cols-3 md:grid-cols-5">
+          <div className="mt-14 grid grid-cols-2 gap-y-10 sm:grid-cols-4">
             {STEPS.map(({ icon: Icon, n, title, text }, i) => (
               <div key={n} className="relative flex flex-col items-center text-center px-2">
                 {i > 0 && (
-                  <div className="absolute left-0 top-7 hidden h-px w-1/2 -translate-x-1/2 border-t border-dashed border-champagne/30 md:block" />
+                  <div className="absolute left-0 top-7 hidden h-px w-1/2 -translate-x-1/2 border-t border-dashed border-champagne/30 sm:block" />
                 )}
                 <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-champagne/50 bg-background">
                   <Icon className="h-5 w-5 text-champagne" strokeWidth={1.2} />
