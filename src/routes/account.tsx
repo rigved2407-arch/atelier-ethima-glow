@@ -11,7 +11,6 @@ export const Route = createFileRoute("/account")({
       { name: "description", content: "View your orders, consultations, and customisation requests at ethima." },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "https://ethima.in/account" }],
   }),
   component: Account,
 });

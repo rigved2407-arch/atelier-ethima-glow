@@ -14,7 +14,6 @@ export const Route = createFileRoute("/auth")({
       { name: "description", content: "Sign in or create an ethima account to track your bespoke pieces and consultations." },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "https://ethima.in/auth" }],
   }),
   component: Auth,
 });

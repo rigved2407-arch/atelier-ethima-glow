@@ -14,7 +14,6 @@ export const Route = createFileRoute("/checkout")({
       { name: "description", content: "Submit your order request." },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "https://ethima.in/checkout" }],
   }),
   component: Checkout,
 });

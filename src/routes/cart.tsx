@@ -10,7 +10,6 @@ export const Route = createFileRoute("/cart")({
       { name: "description", content: "View your ethima cart." },
       { name: "robots", content: "noindex, nofollow" },
     ],
-    links: [{ rel: "canonical", href: "https://ethima.in/cart" }],
   }),
   component: CartPage,
 });

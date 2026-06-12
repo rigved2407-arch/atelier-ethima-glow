@@ -9,6 +9,7 @@ import catBracelets from "@/assets/cat-bracelets.jpg";
 import handImg from "@/assets/process-hand.jpg";
 import sketchImg from "@/assets/journey-sketch.jpg";
 import { PRODUCTS, formatPrice } from "@/data/products";
+import { SITE_URL_CONST } from "@/components/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/")({
     { name: "keywords", content: "lab grown diamond jewellery india, personalised jewellery, custom diamond rings, ethima, fine jewellery india, lab diamond pendants, diamond earrings india" },
     { property: "og:title", content: "ethima — Lab-Grown Diamond Jewellery India" },
     { property: "og:description", content: "Personalised fine jewellery crafted with lab-grown diamonds. Designed around you, not a catalogue." },
-    { property: "og:image", content: heroRing },
+    { property: "og:image", content: `${SITE_URL_CONST}/og-image.jpg` },
     { property: "og:url", content: "https://ethima.in" },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
