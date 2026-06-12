@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /thank-you/
+
+Sitemap: https://ethima.in/sitemap.xml
