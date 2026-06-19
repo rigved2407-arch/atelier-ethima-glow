@@ -70,29 +70,15 @@ function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4 animate-fade-up delay-500">
             <Link
               to="/collections"
-              search={{ collection: "ethima-edit" }}
               className="group btn-glow inline-flex items-center gap-3 bg-champagne px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-primary-foreground transition-all hover:bg-ivory"
             >
-              Explore the ethima Edit
-            </Link>
-            <Link
-              to="/collections"
-              search={{ collection: "personal-edit" }}
-              className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
-            >
-              Explore the Personal Edit
+              Explore the Collection
             </Link>
             <Link
               to="/customise"
               className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
             >
               Create Your Piece
-            </Link>
-            <Link
-              to="/consultation"
-              className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
-            >
-              Book a Consultation
             </Link>
           </div>
         </div>
