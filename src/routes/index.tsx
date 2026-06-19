@@ -148,18 +148,6 @@ function Edit() {
               <Link to="/products/$slug" params={{ slug: "zodiac-pendant" }} className="hover:text-champagne transition-colors">Zodiac</Link>
               <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/60">· Zodiac Pendant</span>
             </li>
-            <li className="flex items-center gap-2 text-ivory/50">
-              <span>Coordinates</span>
-              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/40">Coming soon</span>
-            </li>
-            <li className="flex items-center gap-2 text-ivory/50">
-              <span>Milestones & Dates</span>
-              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/40">Coming soon</span>
-            </li>
-            <li className="flex items-center gap-2 text-ivory/50">
-              <span>Places & Locations</span>
-              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/40">Coming soon</span>
-            </li>
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
