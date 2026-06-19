@@ -161,13 +161,6 @@ function Edit() {
               <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/40">Coming soon</span>
             </li>
           </ul>
-          <Link
-            to="/customise"
-            className="mt-6 flex items-center justify-between gap-4 border border-champagne/20 bg-[oklch(0.18_0.028_200/0.4)] px-5 py-4 text-sm text-ivory/80 hover:border-champagne/50 hover:bg-[oklch(0.22_0.030_200/0.5)] transition-all"
-          >
-            <span>Can't find what you're looking for? <span className="text-champagne underline underline-offset-2">Design a bespoke piece with us</span></span>
-            <ArrowRight className="h-4 w-4 shrink-0 text-champagne" />
-          </Link>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/collections"
@@ -185,6 +178,14 @@ function Edit() {
           </div>
         </div>
       </div>
+
+      <Link
+        to="/customise"
+        className="mt-12 flex items-center justify-between gap-4 border border-champagne/20 bg-[oklch(0.18_0.028_200/0.4)] px-6 py-5 text-sm text-ivory/80 hover:border-champagne/50 hover:bg-[oklch(0.22_0.030_200/0.5)] transition-all"
+      >
+        <span>Can't find what you're looking for? <span className="text-champagne underline underline-offset-2">Design a bespoke piece with us</span></span>
+        <ArrowRight className="h-5 w-5 shrink-0 text-champagne" />
+      </Link>
     </section>
   );
 }
