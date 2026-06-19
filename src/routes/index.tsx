@@ -181,12 +181,21 @@ function Edit() {
           <p className="mt-6 text-sm leading-relaxed text-ivory/65 italic">
             Can't find what you're looking for? Design a bespoke piece with us.
           </p>
-          <Link
-            to="/customise"
-            className="mt-8 inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
-          >
-            Create Your Piece <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to="/collections"
+              search={{ collection: "personal-edit" }}
+              className="inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
+            >
+              Explore the Personal Edit <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+            <Link
+              to="/customise"
+              className="inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
+            >
+              Create Your Piece <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
