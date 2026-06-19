@@ -22,7 +22,7 @@ export const Route = createFileRoute("/customise")({
 });
 
 const PIECES = ["Ring", "Pendant", "Necklace", "Earrings",];
-const METALS = ["925 Sterling Silver", "10KT Yellow Gold", "10KT White Gold", "10KT Rose Gold"];
+const METALS = ["925 Sterling Silver", "10KT Yellow Gold", "Gold Vermeil on 925 Silver"];
 const SHAPES = ["Round", "Oval", "Pear", "Emerald", "Cushion", "Marquise"];
 
 function Customise() {
