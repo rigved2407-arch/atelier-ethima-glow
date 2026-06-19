@@ -130,7 +130,7 @@ function Edit() {
             search={{ collection: "ethima-edit" }}
             className="mt-8 inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
           >
-            Explore the ethima Edit <ArrowRight className="h-3.5 w-3.5" />
+            Explore the <span className="lowercase-ethima">ethima</span> Edit <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 

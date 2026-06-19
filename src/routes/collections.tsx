@@ -67,7 +67,9 @@ function Collections() {
         { name: collection === "all" ? "All Collections" : heading.eyebrow, url: `/collections${collection !== "all" ? `?collection=${collection}` : ""}` },
       ])} />
       <div className="flex flex-wrap gap-2 mb-6">
-        {COLLECTIONS.map((col) => (
+        {COLLECTIONS.map((col) => {
+          const parts = col.label.split("ethima");
+          return (
           <button
             key={col.value}
             onClick={() => setCollection(col.value)}
@@ -77,9 +79,10 @@ function Collections() {
                 : "border border-champagne/30 text-ivory/80 hover:bg-champagne/10"
             }`}
           >
-            {col.label}
+            {parts.length > 1 ? <>{parts[0]}<span className="lowercase-ethima">ethima</span>{parts[1]}</> : col.label}
           </button>
-        ))}
+          );
+        })}
       </div>
       <div className="flex flex-wrap gap-2 mb-10">
         {CATEGORIES.map((cat) => (

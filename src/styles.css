@@ -130,9 +130,12 @@
   .eyebrow {
     font-size: 0.68rem;
     letter-spacing: 0.34em;
-    text-transform: uppercase;
     color: var(--color-champagne);
     font-weight: 400;
+  }
+
+  .lowercase-ethima {
+    text-transform: lowercase !important;
   }
 
   .hairline {
