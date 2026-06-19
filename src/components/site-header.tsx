@@ -9,7 +9,6 @@ const COLLECTION_CATEGORIES = [
   { to: "/collections?category=rings", label: "Rings" },
   { to: "/collections?category=pendants", label: "Pendants" },
   { to: "/collections?category=earrings", label: "Earrings" },
-  { to: "/collections?category=bracelets", label: "Bracelets" },
 ];
 
 const NAV = [

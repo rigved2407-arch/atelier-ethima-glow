@@ -22,6 +22,11 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as Products$slugRouteImport } from './routes/products.$slug'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as ReturnsRouteImport } from './routes/returns'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ProcessRoute = ProcessRouteImport.update({
@@ -96,6 +101,36 @@ const Products$slugRoute = Products$slugRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+const ReturnsRoute = ReturnsRouteImport.update({
+  id: '/returns',
+  path: '/returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
@@ -103,13 +138,18 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/customise': typeof CustomiseRoute
   '/education': typeof EducationRoute
+  '/faqs': typeof FaqsRoute
+  '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/returns': typeof ReturnsRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
 }
 export interface FileRoutesByTo {
@@ -119,13 +159,18 @@ export interface FileRoutesByTo {
   '/account': typeof AccountRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/customise': typeof CustomiseRoute
   '/education': typeof EducationRoute
+  '/faqs': typeof FaqsRoute
+  '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/returns': typeof ReturnsRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
 }
 export interface FileRoutesById {
@@ -136,13 +181,18 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/customise': typeof CustomiseRoute
   '/education': typeof EducationRoute
+  '/faqs': typeof FaqsRoute
+  '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/returns': typeof ReturnsRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
 }
 export interface FileRouteTypes {
@@ -153,14 +203,19 @@ export interface FileRouteTypes {
     | '/account'
     | '/admin'
     | '/auth'
+    | '/cart'
     | '/checkout'
     | '/collections'
     | '/consultation'
     | '/contact'
     | '/customise'
     | '/education'
+    | '/faqs'
+    | '/privacy'
     | '/process'
     | '/products/$slug'
+    | '/returns'
+    | '/terms'
     | '/thank-you'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -169,14 +224,19 @@ export interface FileRouteTypes {
     | '/account'
     | '/admin'
     | '/auth'
+    | '/cart'
     | '/checkout'
     | '/collections'
     | '/consultation'
     | '/contact'
     | '/customise'
     | '/education'
+    | '/faqs'
+    | '/privacy'
     | '/process'
     | '/products/$slug'
+    | '/returns'
+    | '/terms'
     | '/thank-you'
   id:
     | '__root__'
@@ -185,14 +245,19 @@ export interface FileRouteTypes {
     | '/account'
     | '/admin'
     | '/auth'
+    | '/cart'
     | '/checkout'
     | '/collections'
     | '/consultation'
     | '/contact'
     | '/customise'
     | '/education'
+    | '/faqs'
+    | '/privacy'
     | '/process'
     | '/products/$slug'
+    | '/returns'
+    | '/terms'
     | '/thank-you'
   fileRoutesById: FileRoutesById
 }
@@ -203,13 +268,18 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
+  CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   CollectionsRoute: typeof CollectionsRoute
   ConsultationRoute: typeof ConsultationRoute
   ContactRoute: typeof ContactRoute
   CustomiseRoute: typeof CustomiseRoute
   EducationRoute: typeof EducationRoute
+  FaqsRoute: typeof FaqsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
+  ReturnsRoute: typeof ReturnsRoute
+  TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
 }
 
@@ -222,11 +292,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Products$slugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/returns': {
+      id: '/returns'
+      path: '/returns'
+      fullPath: '/returns'
+      preLoaderRoute: typeof ReturnsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/process': {
       id: '/process'
       path: '/process'
       fullPath: '/process'
       preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/education': {
@@ -269,6 +367,13 @@ declare module '@tanstack/react-router' {
       path: '/collections'
       fullPath: '/collections'
       preLoaderRoute: typeof CollectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -323,13 +428,18 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRoute,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
+  CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   CollectionsRoute: CollectionsRoute,
   ConsultationRoute: ConsultationRoute,
   ContactRoute: ContactRoute,
   CustomiseRoute: CustomiseRoute,
   EducationRoute: EducationRoute,
+  FaqsRoute: FaqsRoute,
+  PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
+  ReturnsRoute: ReturnsRoute,
+  TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
 }
 export const routeTree = rootRouteImport

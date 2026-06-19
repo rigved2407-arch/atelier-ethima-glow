@@ -87,9 +87,6 @@ function Hero() {
   );
 }
 
-
-    
-
 const VALUES = [
   { title: "Designed Around You", text: "Every ethima piece is crafted to order with personalised details, metal choices, and lab-grown diamond customisation options." },
   { title: "Lab-Grown Diamonds", text: "Selected for brilliance, quality, and conscious craftsmanship." },
