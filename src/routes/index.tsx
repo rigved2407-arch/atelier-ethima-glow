@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Gem, MessageSquare, Pencil, Package, ArrowRight, User, Heart, ChevronRight } from "lucide-react";
 import heroRing from "@/assets/hero-ring.jpg";
 import handImg from "@/assets/process-hand.jpg";
@@ -235,14 +235,11 @@ function Process() {
   );
 }
 
-const CARD_W = 280;
-const GAP = 16;
-
 function ProductsCarousel() {
-  const wrapRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-  const ptr = useRef({ down: false, startX: 0, dragX: 0, moved: false });
+  const posRef = useRef(0);
+  const animRef = useRef<number | null>(null);
+  const ptr = useRef({ down: false, startX: 0, startPos: 0, dragX: 0, moved: false });
 
   const items = PRODUCTS.map((p) => {
     const img = p.images.silver?.[0] || p.images.gold?.[0] || "";
@@ -250,37 +247,73 @@ function ProductsCarousel() {
     return { slug: p.slug, name: p.name, img, minPrice };
   });
 
-  const doubled = [...items, ...items];
+  const CARD_W = 280;
+  const GAP = 16;
+  const doubled = [...items, ...items, ...items];
   const trackW = items.length * (CARD_W + GAP);
-  const dur = items.length * 4;
 
-  const pause = () => {
-    setPaused(true);
-    if (trackRef.current) trackRef.current.style.animationPlayState = "paused";
+  const updatePos = (x: number) => {
+    posRef.current = x;
+    if (trackRef.current) trackRef.current.style.transform = `translateX(${x}px)`;
   };
 
-  const resume = () => {
-    setPaused(false);
-    if (wrapRef.current) wrapRef.current.style.transform = "";
-    if (trackRef.current) trackRef.current.style.animationPlayState = "running";
+  const startScroll = () => {
+    const step = () => {
+      const next = posRef.current - 1.5;
+      if (next <= -trackW * 2) {
+        posRef.current = 0;
+      } else {
+        posRef.current = next;
+      }
+      if (trackRef.current) trackRef.current.style.transform = `translateX(${posRef.current}px)`;
+      animRef.current = requestAnimationFrame(step);
+    };
+    animRef.current = requestAnimationFrame(step);
   };
+
+  const stopScroll = () => {
+    if (animRef.current !== null) { cancelAnimationFrame(animRef.current); animRef.current = null; }
+  };
+
+  useEffect(() => { startScroll(); return () => stopScroll(); }, []);
 
   const onDown = (e: React.PointerEvent) => {
-    pause();
-    ptr.current = { down: true, startX: e.clientX, dragX: 0, moved: false };
+    stopScroll();
+    ptr.current = { down: true, startX: e.clientX, startPos: posRef.current, dragX: 0, moved: false };
   };
 
   const onMove = (e: React.PointerEvent) => {
-    if (!ptr.current.down) return;
+    if (!ptr.current.down || !trackRef.current) return;
     const dx = e.clientX - ptr.current.startX;
-    if (Math.abs(dx) > 8) ptr.current.moved = true;
+    if (Math.abs(dx) > 6) ptr.current.moved = true;
     ptr.current.dragX = dx;
-    if (wrapRef.current) wrapRef.current.style.transform = `translateX(${dx}px)`;
+    trackRef.current.style.transform = `translateX(${ptr.current.startPos + dx}px)`;
+    trackRef.current.style.transition = "none";
   };
 
   const onUp = () => {
+    if (!ptr.current.moved) {
+      ptr.current.down = false;
+      startScroll();
+      return;
+    }
+    if (Math.abs(ptr.current.dragX) > 40 && trackRef.current) {
+      const dir = ptr.current.dragX > 0 ? 1 : -1;
+      const snap = dir * (CARD_W + GAP);
+      const target = ptr.current.startPos + snap;
+      trackRef.current.style.transition = "transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+      trackRef.current.style.transform = `translateX(${target}px)`;
+      posRef.current = target;
+      setTimeout(() => startScroll(), 350);
+    } else {
+      if (trackRef.current) {
+        trackRef.current.style.transition = "transform 0.25s ease";
+        trackRef.current.style.transform = `translateX(${ptr.current.startPos}px)`;
+        posRef.current = ptr.current.startPos;
+      }
+      setTimeout(() => startScroll(), 250);
+    }
     ptr.current.down = false;
-    setTimeout(() => { if (!ptr.current.moved) resume(); }, 200);
   };
 
   return (
@@ -301,54 +334,42 @@ function ProductsCarousel() {
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
-        onMouseEnter={() => pause()}
-        onMouseLeave={() => { if (!ptr.current.down) resume(); }}
         style={{ touchAction: "pan-y" }}
       >
-        <div ref={wrapRef} style={{ transition: "transform 0.4s ease" }}>
-          <div
-            ref={trackRef}
-            className="flex"
-            style={{
-              gap: `${GAP}px`,
-              width: `${doubled.length * (CARD_W + GAP)}px`,
-              animation: `scroll ${dur}s linear infinite`,
-              willChange: "transform",
-            }}
-          >
-            {doubled.map((item, i) => (
-              <Link
-  key={`${item.slug}-${i}`}
-  to="/products/$slug"
-  params={{ slug: item.slug }}
-  className="block shrink-0 transition-opacity duration-500 hover:opacity-100"
-  style={{ width: `${CARD_W}px`, opacity: paused ? 1 : undefined }}
-  onClick={(e) => { if (ptr.current.moved) e.preventDefault(); }}
->
-                <div className="aspect-[4/5] overflow-hidden bg-[oklch(0.16_0.025_200)]">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </div>
-                <div className="mt-4 px-1">
-                  <p className="text-sm text-ivory/90 truncate">{item.name}</p>
-                  <p className="mt-1 text-xs text-champagne/80">from {formatPrice(item.minPrice)}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+        <div
+          ref={trackRef}
+          className="flex"
+          style={{
+            gap: `${GAP}px`,
+            width: `${doubled.length * (CARD_W + GAP)}px`,
+            willChange: "transform",
+          }}
+        >
+          {doubled.map((item, i) => (
+            <Link
+              key={`${item.slug}-${i}`}
+              to="/products/$slug"
+              params={{ slug: item.slug }}
+              className="block shrink-0"
+              style={{ width: `${CARD_W}px` }}
+              onClick={(e) => { if (ptr.current.moved) e.preventDefault(); }}
+            >
+              <div className="aspect-[4/5] overflow-hidden bg-[oklch(0.16_0.025_200)]">
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+              <div className="mt-4 px-1">
+                <p className="text-sm text-ivory/90 truncate">{item.name}</p>
+                <p className="mt-1 text-xs text-champagne/80">from {formatPrice(item.minPrice)}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-${trackW}px); }
-        }
-      `}</style>
     </section>
   );
 }
