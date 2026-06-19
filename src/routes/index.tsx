@@ -2,10 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { Gem, MessageSquare, Pencil, Package, ArrowRight, User, Heart, ChevronRight } from "lucide-react";
 import heroRing from "@/assets/hero-ring.jpg";
-import catRings from "@/assets/cat-rings.jpg";
-import catPendants from "@/assets/cat-pendants.jpg";
-import catEarrings from "@/assets/cat-earrings.jpg";
-import catBracelets from "@/assets/cat-bracelets.jpg";
 import handImg from "@/assets/process-hand.jpg";
 import sketchImg from "@/assets/journey-sketch.jpg";
 import { PRODUCTS, formatPrice } from "@/data/products";
@@ -68,21 +64,27 @@ function Hero() {
           </h1>
           <div className="mt-9 h-px w-16 bg-champagne/60 animate-fade-up delay-300" />
           <p className="mt-8 max-w-md text-base leading-relaxed text-ivory/80 font-light animate-fade-up delay-300">
-            Modern, minimal and meaningful jewellery crafted with lab-grown diamonds.
+            Fine jewellery and meaningful custom pieces, crafted in lab-grown diamonds.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4 animate-fade-up delay-500">
             <Link
-              to="/customise"
+              to="/collections"
               className="group btn-glow inline-flex items-center gap-3 bg-champagne px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-primary-foreground transition-all hover:bg-ivory"
             >
-              Start Your Piece
+              Explore the ethima Edit
+            </Link>
+            <Link
+              to="/customise"
+              className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
+            >
+              Create Your Piece
             </Link>
             <Link
               to="/consultation"
               className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
             >
-              Book Your Consultation
+              Book a Consultation
             </Link>
           </div>
         </div>
@@ -115,53 +117,67 @@ function Values() {
     </section>
   );
 }
-const CATS = [
-  { label: "Rings", img: catRings },
-  { label: "Pendants", img: catPendants },
-  { label: "Earrings", img: catEarrings },
-  { label: "Bracelets", img: catBracelets },
-];
-
 function Edit() {
   return (
     <section className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10">
-      <div className="grid gap-12 lg:grid-cols-[1fr_3fr]">
-        <div className="lg:pt-8">
-          <p className="eyebrow">The ethima Edit</p>
-          <h2 className="mt-5 font-serif text-4xl leading-tight text-ivory md:text-5xl">
-            Minimal pieces.<br />Meaningful stories.
-          </h2>
-          <div className="mt-6 h-px w-16 bg-champagne/60" />
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/70">
-            A curated collection of everyday jewellery that blends simplicity with intention.
+      <div className="grid gap-16 lg:grid-cols-2">
+        {/* The ethima Edit */}
+        <div className="border border-border bg-[oklch(0.16_0.025_200/0.5)] p-8 md:p-12">
+          <p className="eyebrow text-champagne">The ethima Edit</p>
+          <h2 className="mt-4 font-serif text-3xl text-ivory md:text-4xl">Design-led everyday fine jewellery.</h2>
+          <div className="mt-4 h-px w-12 bg-champagne/40" />
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ivory/80">
+            <Link to="/collections?category=rings" className="hover:text-champagne transition-colors">Rings</Link>
+            <Link to="/collections?category=earrings" className="hover:text-champagne transition-colors">Earrings</Link>
+            <Link to="/collections?category=pendants" className="hover:text-champagne transition-colors">Pendants</Link>
+          </div>
+          <p className="mt-6 text-sm leading-relaxed text-ivory/65">
+            Featuring the Diamond Hoops, Luna Ring, Elara Solitaire, and more.
           </p>
-          <Link to="/collections" className="mt-8 inline-flex items-center gap-3 text-[0.7rem] tracking-[0.28em] uppercase text-champagne hover:text-ivory">
-            Explore / Shop the ethima edit <ArrowRight className="h-4 w-4" />
+          <Link
+            to="/collections"
+            className="mt-8 inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
+          >
+            Explore the ethima Edit <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          {CATS.map((c) => (
-            <Link
-              to="/collections"
-              key={c.label}
-              className="group relative block aspect-[3/4] overflow-hidden bg-secondary"
-            >
-              <img
-                src={c.img}
-                alt={c.label}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.12_0.02_200/0.9)] via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="text-[0.7rem] tracking-[0.28em] uppercase text-ivory">{c.label}</p>
-                <span className="mt-1 inline-flex items-center gap-2 text-xs text-champagne">
-                  Explore <ArrowRight className="h-3 w-3" />
-                </span>
-              </div>
-            </Link>
-          ))}
+        {/* The Personal Edit */}
+        <div className="border border-border bg-[oklch(0.16_0.025_200/0.5)] p-8 md:p-12">
+          <p className="eyebrow text-champagne">The Personal Edit</p>
+          <h2 className="mt-4 font-serif text-3xl text-ivory md:text-4xl">Meaning-led jewellery designed around your story.</h2>
+          <div className="mt-4 h-px w-12 bg-champagne/40" />
+          <ul className="mt-6 space-y-3 text-sm text-ivory/80">
+            <li className="flex items-center gap-2">
+              <Link to="/products/$slug" params={{ slug: "initial-pendant" }} className="hover:text-champagne transition-colors">Initials</Link>
+              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/60">· Initial Pendant</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Link to="/products/$slug" params={{ slug: "zodiac-pendant" }} className="hover:text-champagne transition-colors">Zodiac</Link>
+              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/60">· Zodiac Pendant</span>
+            </li>
+            <li className="flex items-center gap-2 text-ivory/50">
+              <span>Coordinates</span>
+              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/40">Coming soon</span>
+            </li>
+            <li className="flex items-center gap-2 text-ivory/50">
+              <span>Milestones & Dates</span>
+              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/40">Coming soon</span>
+            </li>
+            <li className="flex items-center gap-2 text-ivory/50">
+              <span>Places & Locations</span>
+              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/40">Coming soon</span>
+            </li>
+          </ul>
+          <p className="mt-6 text-sm leading-relaxed text-ivory/65 italic">
+            Can't find what you're looking for? Design a bespoke piece with us.
+          </p>
+          <Link
+            to="/customise"
+            className="mt-8 inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
+          >
+            Create Your Piece <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </div>
     </section>
