@@ -76,6 +76,13 @@ function Hero() {
               Explore the ethima Edit
             </Link>
             <Link
+              to="/collections"
+              search={{ collection: "personal-edit" }}
+              className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
+            >
+              Explore the Personal Edit
+            </Link>
+            <Link
               to="/customise"
               className="inline-flex items-center gap-3 border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
             >
