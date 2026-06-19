@@ -125,9 +125,6 @@ function Edit() {
             <Link to="/collections" search={{ collection: "ethima-edit", category: "earrings" }} className="hover:text-champagne transition-colors">Earrings</Link>
             <Link to="/collections" search={{ collection: "ethima-edit", category: "pendants" }} className="hover:text-champagne transition-colors">Pendants</Link>
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-ivory/65">
-            Featuring the Diamond Hoops, Luna Ring, Elara Solitaire, and more.
-          </p>
           <Link
             to="/collections"
             search={{ collection: "ethima-edit" }}
