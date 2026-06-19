@@ -415,6 +415,17 @@ export function getProductsByCategory(category: string): Product[] {
   return PRODUCTS.filter((p) => p.category === category)
 }
 
+export function getProductsByCollection(collectionSlug: string): Product[] {
+  if (!collectionSlug || collectionSlug === "all") return PRODUCTS
+  const collectionMap: Record<string, string[]> = {
+    "ethima-edit": ["The Everyday Edit", "The ethima Signature"],
+    "personal-edit": ["The Personal Edit"],
+  }
+  const collections = collectionMap[collectionSlug]
+  if (!collections) return PRODUCTS
+  return PRODUCTS.filter((p) => collections.includes(p.collection))
+}
+
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug)
 }

@@ -70,6 +70,7 @@ function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4 animate-fade-up delay-500">
             <Link
               to="/collections"
+              search={{ collection: "ethima-edit" }}
               className="group btn-glow inline-flex items-center gap-3 bg-champagne px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-primary-foreground transition-all hover:bg-ivory"
             >
               Explore the ethima Edit
@@ -127,15 +128,16 @@ function Edit() {
           <h2 className="mt-4 font-serif text-3xl text-ivory md:text-4xl">Design-led everyday fine jewellery.</h2>
           <div className="mt-4 h-px w-12 bg-champagne/40" />
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ivory/80">
-            <Link to="/collections?category=rings" className="hover:text-champagne transition-colors">Rings</Link>
-            <Link to="/collections?category=earrings" className="hover:text-champagne transition-colors">Earrings</Link>
-            <Link to="/collections?category=pendants" className="hover:text-champagne transition-colors">Pendants</Link>
+            <Link to="/collections" search={{ collection: "ethima-edit", category: "rings" }} className="hover:text-champagne transition-colors">Rings</Link>
+            <Link to="/collections" search={{ collection: "ethima-edit", category: "earrings" }} className="hover:text-champagne transition-colors">Earrings</Link>
+            <Link to="/collections" search={{ collection: "ethima-edit", category: "pendants" }} className="hover:text-champagne transition-colors">Pendants</Link>
           </div>
           <p className="mt-6 text-sm leading-relaxed text-ivory/65">
             Featuring the Diamond Hoops, Luna Ring, Elara Solitaire, and more.
           </p>
           <Link
             to="/collections"
+            search={{ collection: "ethima-edit" }}
             className="mt-8 inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
           >
             Explore the ethima Edit <ArrowRight className="h-3.5 w-3.5" />
