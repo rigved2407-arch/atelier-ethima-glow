@@ -148,6 +148,9 @@ function Edit() {
               <Link to="/products/$slug" params={{ slug: "zodiac-pendant" }} className="hover:text-champagne transition-colors">Zodiac</Link>
               <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/60">· Zodiac Pendant</span>
             </li>
+            <li className="pt-2 text-[0.65rem] tracking-[0.2em] uppercase text-champagne/50">
+              More personalised collections arriving soon
+            </li>
           </ul>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
