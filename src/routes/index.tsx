@@ -116,60 +116,68 @@ function Edit() {
     <section className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10">
       <div className="grid gap-16 lg:grid-cols-2">
         {/* The ethima Edit */}
-        <div className="border border-border bg-[oklch(0.16_0.025_200/0.5)] p-8 md:p-12">
-          <p className="eyebrow text-champagne">The ethima Edit</p>
-          <h2 className="mt-4 font-serif text-3xl text-ivory md:text-4xl">Design-led everyday fine jewellery.</h2>
-          <div className="mt-4 h-px w-12 bg-champagne/40" />
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ivory/80">
-            <Link to="/collections" search={{ collection: "ethima-edit", category: "rings" }} className="hover:text-champagne transition-colors">Rings</Link>
-            <Link to="/collections" search={{ collection: "ethima-edit", category: "earrings" }} className="hover:text-champagne transition-colors">Earrings</Link>
-            <Link to="/collections" search={{ collection: "ethima-edit", category: "pendants" }} className="hover:text-champagne transition-colors">Pendants</Link>
+        <div className="group relative border border-champagne/15 bg-gradient-to-b from-[oklch(0.18_0.030_200/0.6)] to-[oklch(0.14_0.020_200/0.7)] p-8 md:p-12 transition-all duration-500 hover:border-champagne/30">
+          <div className="absolute inset-0 bg-gradient-to-b from-champagne/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          <div className="relative">
+            <p className="eyebrow text-champagne">The ethima Edit</p>
+            <h2 className="mt-5 font-serif text-3xl leading-tight text-ivory md:text-4xl">Design-led everyday fine jewellery.</h2>
+            <div className="mt-5 h-px w-14 bg-gradient-to-r from-champagne/60 to-transparent" />
+            <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ivory/80">
+              <Link to="/collections" search={{ collection: "ethima-edit", category: "rings" }} className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full">Rings</Link>
+              <Link to="/collections" search={{ collection: "ethima-edit", category: "earrings" }} className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full">Earrings</Link>
+              <Link to="/collections" search={{ collection: "ethima-edit", category: "pendants" }} className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full">Pendants</Link>
+            </div>
+            <Link
+              to="/collections"
+              search={{ collection: "ethima-edit" }}
+              className="mt-10 inline-flex items-center gap-3 border border-champagne/50 px-7 py-3.5 text-[0.65rem] tracking-[0.28em] uppercase text-champagne transition-all duration-300 hover:bg-champagne hover:text-primary-foreground hover:border-champagne hover:shadow-lg hover:shadow-champagne/10"
+            >
+              Explore the <span className="lowercase-ethima">ethima</span> Edit <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </Link>
           </div>
-          <Link
-            to="/collections"
-            search={{ collection: "ethima-edit" }}
-            className="mt-8 inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
-          >
-            Explore the <span className="lowercase-ethima">ethima</span> Edit <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
         </div>
 
         {/* The Personal Edit */}
-        <div className="border border-border bg-[oklch(0.16_0.025_200/0.5)] p-8 md:p-12">
-          <p className="eyebrow text-champagne">The Personal Edit</p>
-          <h2 className="mt-4 font-serif text-3xl text-ivory md:text-4xl">Meaning-led jewellery designed around your story.</h2>
-          <div className="mt-4 h-px w-12 bg-champagne/40" />
-          <ul className="mt-6 space-y-3 text-sm text-ivory/80">
-            <li className="flex items-center gap-2">
-              <Link to="/products/$slug" params={{ slug: "initial-pendant" }} className="hover:text-champagne transition-colors">Initials</Link>
-              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/60">· Initial Pendant</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <Link to="/products/$slug" params={{ slug: "zodiac-pendant" }} className="hover:text-champagne transition-colors">Zodiac</Link>
-              <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/60">· Zodiac Pendant</span>
-            </li>
-            <li className="pt-2 text-[0.65rem] tracking-[0.2em] uppercase text-champagne/50">
-              More personalised collections arriving soon
-            </li>
-          </ul>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/collections"
-              search={{ collection: "personal-edit" }}
-              className="inline-flex items-center gap-2 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
-            >
-              Explore the Personal Edit <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+        <div className="group relative border border-champagne/15 bg-gradient-to-b from-[oklch(0.18_0.030_200/0.6)] to-[oklch(0.14_0.020_200/0.7)] p-8 md:p-12 transition-all duration-500 hover:border-champagne/30">
+          <div className="absolute inset-0 bg-gradient-to-b from-champagne/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          <div className="relative">
+            <p className="eyebrow text-champagne">The Personal Edit</p>
+            <h2 className="mt-5 font-serif text-3xl leading-tight text-ivory md:text-4xl">Meaning-led jewellery designed around your story.</h2>
+            <div className="mt-5 h-px w-14 bg-gradient-to-r from-champagne/60 to-transparent" />
+            <ul className="mt-7 space-y-4 text-sm text-ivory/80">
+              <li className="flex items-center gap-3">
+                <span className="h-1 w-1 rounded-full bg-champagne/60" />
+                <Link to="/products/$slug" params={{ slug: "initial-pendant" }} className="tracking-wide hover:text-champagne transition-colors duration-300">Initials</Link>
+                <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/50">· Initial Pendant</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="h-1 w-1 rounded-full bg-champagne/60" />
+                <Link to="/products/$slug" params={{ slug: "zodiac-pendant" }} className="tracking-wide hover:text-champagne transition-colors duration-300">Zodiac</Link>
+                <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/50">· Zodiac Pendant</span>
+              </li>
+              <li className="pt-3 text-[0.6rem] tracking-[0.22em] uppercase text-champagne/40">
+                More personalised collections arriving soon
+              </li>
+            </ul>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                to="/collections"
+                search={{ collection: "personal-edit" }}
+                className="inline-flex items-center gap-3 border border-champagne/50 px-7 py-3.5 text-[0.65rem] tracking-[0.28em] uppercase text-champagne transition-all duration-300 hover:bg-champagne hover:text-primary-foreground hover:border-champagne hover:shadow-lg hover:shadow-champagne/10"
+              >
+                Explore the Personal Edit <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
       <Link
         to="/customise"
-        className="mt-12 flex items-center justify-between gap-4 border border-champagne/20 bg-[oklch(0.18_0.028_200/0.4)] px-6 py-5 text-sm text-ivory/80 hover:border-champagne/50 hover:bg-[oklch(0.22_0.030_200/0.5)] transition-all"
+        className="group mt-14 flex items-center justify-between gap-4 border border-champagne/15 bg-gradient-to-r from-[oklch(0.18_0.028_200/0.4)] to-[oklch(0.14_0.020_200/0.5)] px-7 py-5 text-sm text-ivory/80 hover:border-champagne/40 transition-all duration-300"
       >
-        <span>Can't find what you're looking for? <span className="text-champagne underline underline-offset-2">Design a bespoke piece with us</span></span>
-        <ArrowRight className="h-5 w-5 shrink-0 text-champagne" />
+        <span>Can't find what you're looking for? <span className="text-champagne underline underline-offset-4 decoration-champagne/40 transition-all duration-300 group-hover:decoration-champagne">Design a bespoke piece with us</span></span>
+        <ArrowRight className="h-5 w-5 shrink-0 text-champagne transition-transform duration-300 group-hover:translate-x-1" />
       </Link>
     </section>
   );
