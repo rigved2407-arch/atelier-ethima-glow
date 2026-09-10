@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Gem, MessageSquare, Pencil, Package, ArrowRight, User, Heart, ChevronRight } from "lucide-react";
+import {
+  Gem,
+  MessageSquare,
+  Pencil,
+  Package,
+  ArrowRight,
+  User,
+  Heart,
+  ChevronRight,
+} from "lucide-react";
 import heroRing from "@/assets/hero-ring.jpg";
 import handImg from "@/assets/process-hand.jpg";
 import sketchImg from "@/assets/journey-sketch.jpg";
@@ -9,22 +18,37 @@ import { SITE_URL_CONST } from "@/components/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-  meta: [
-    { title: "ethima — Lab-Grown Diamond Jewellery | Personalised Fine Jewellery India" },
-    { name: "description", content: "Shop personalised lab-grown diamond jewellery at ethima. Rings, pendants, earrings and bracelets crafted to order. Elegance within reach." },
-    { name: "keywords", content: "lab grown diamond jewellery india, personalised jewellery, custom diamond rings, ethima, fine jewellery india, lab diamond pendants, diamond earrings india" },
-    { property: "og:title", content: "ethima — Lab-Grown Diamond Jewellery India" },
-    { property: "og:description", content: "Personalised fine jewellery crafted with lab-grown diamonds. Designed around you, not a catalogue." },
-    { property: "og:image", content: `${SITE_URL_CONST}/og-image.jpg` },
-    { property: "og:url", content: "https://ethima.in" },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "ethima — Lab-Grown Diamond Jewellery India" },
-    { name: "twitter:description", content: "Personalised fine jewellery crafted with lab-grown diamonds." },
-    { name: "robots", content: "index, follow" },
-  ],
-  links: [{ rel: "canonical", href: "https://ethima.in" }],
-}),
+    meta: [
+      { title: "ethima — Lab-Grown Diamond Jewellery | Personalised Fine Jewellery India" },
+      {
+        name: "description",
+        content:
+          "Shop personalised lab-grown diamond jewellery at ethima. Rings, pendants, earrings and bracelets crafted to order. Elegance within reach.",
+      },
+      {
+        name: "keywords",
+        content:
+          "lab grown diamond jewellery india, personalised jewellery, custom diamond rings, ethima, fine jewellery india, lab diamond pendants, diamond earrings india",
+      },
+      { property: "og:title", content: "ethima — Lab-Grown Diamond Jewellery India" },
+      {
+        property: "og:description",
+        content:
+          "Personalised fine jewellery crafted with lab-grown diamonds. Designed around you, not a catalogue.",
+      },
+      { property: "og:image", content: `${SITE_URL_CONST}/og-image.jpg` },
+      { property: "og:url", content: "https://ethima.in" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ethima — Lab-Grown Diamond Jewellery India" },
+      {
+        name: "twitter:description",
+        content: "Personalised fine jewellery crafted with lab-grown diamonds.",
+      },
+      { name: "robots", content: "index, follow" },
+    ],
+    links: [{ rel: "canonical", href: "https://ethima.in" }],
+  }),
   component: Home,
 });
 
@@ -43,12 +67,14 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden">
+    <section className="hero-shell relative isolate overflow-hidden">
+      <div className="hero-grid pointer-events-none absolute inset-0 -z-10" />
+      <div className="hero-orb pointer-events-none -z-10" />
       <div className="absolute inset-0 -z-10">
         <img
           src={heroRing}
           alt="Lab-grown diamond solitaire ring on dark stone"
-          className="h-full w-full object-cover opacity-90"
+          className="h-full w-full object-cover opacity-75"
           width={1920}
           height={1080}
         />
@@ -56,13 +82,15 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.14_0.022_200)] via-transparent to-[oklch(0.14_0.022_200/0.4)]" />
       </div>
 
-      <div className="mx-auto flex min-h-[92vh] max-w-[1400px] items-center px-6 pt-32 pb-24 lg:px-10">
-        <div className="max-w-2xl">
-          <h1 className="mt-7 font-serif text-[2.75rem] leading-[1.02] text-ivory md:text-6xl lg:text-[5rem] animate-fade-up delay-150">
-            <span className="italic font-light">Designed</span> around you,<br />
+      <div className="mx-auto grid min-h-[92vh] max-w-[1400px] items-center gap-12 px-6 pt-32 pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
+        <div className="relative z-10 max-w-2xl">
+          <p className="eyebrow animate-fade-up">Independent fine jewellery · Bengaluru / India</p>
+          <h1 className="mt-7 max-w-[13ch] font-serif text-[2.9rem] leading-[0.98] text-ivory md:text-6xl lg:text-[5.8rem] animate-fade-up delay-150">
+            <span className="italic font-light">Designed</span> around you,
+            <br />
             <span className="italic font-light">not</span> a catalogue.
           </h1>
-          <div className="mt-9 h-px w-16 bg-champagne/60 animate-fade-up delay-300" />
+          <div className="shimmer-line mt-9 h-px w-20 animate-fade-up delay-300" />
           <p className="mt-8 max-w-md text-base leading-relaxed text-ivory/80 font-light animate-fade-up delay-300">
             Fine jewellery and meaningful custom pieces, crafted in lab-grown diamonds.
           </p>
@@ -81,17 +109,71 @@ function Hero() {
               Create Your Piece
             </Link>
           </div>
+          <div className="mt-14 grid max-w-lg grid-cols-3 gap-5 border-t border-champagne/20 pt-5 animate-fade-up delay-500">
+            <div>
+              <p className="font-serif text-2xl text-ivory">01</p>
+              <p className="mt-1 text-[0.58rem] uppercase tracking-[0.2em] text-ivory/55">
+                Your story
+              </p>
+            </div>
+            <div>
+              <p className="font-serif text-2xl text-ivory">∞</p>
+              <p className="mt-1 text-[0.58rem] uppercase tracking-[0.2em] text-ivory/55">
+                Made to order
+              </p>
+            </div>
+            <div>
+              <p className="font-serif text-2xl text-ivory">LG</p>
+              <p className="mt-1 text-[0.58rem] uppercase tracking-[0.2em] text-ivory/55">
+                Lab-grown
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="relative hidden min-h-[480px] items-center justify-center lg:flex">
+          <div className="hero-image-wrap relative aspect-[4/5] w-[min(31rem,42vw)] overflow-hidden rounded-[45%_45%_3%_3%] border border-champagne/20 shadow-2xl shadow-black/40">
+            <img
+              src={heroRing}
+              alt="Lab-grown diamond solitaire ring on dark stone"
+              className="h-full w-full object-cover"
+              loading="eager"
+              width={900}
+              height={1125}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/55 via-transparent to-champagne/10" />
+            <div className="glass-panel absolute bottom-5 left-5 right-5 flex items-center justify-between px-5 py-4">
+              <div>
+                <p className="text-[0.58rem] uppercase tracking-[0.22em] text-champagne">
+                  Signature study
+                </p>
+                <p className="mt-1 font-serif text-xl text-ivory">The Elara solitaire</p>
+              </div>
+              <span className="text-champagne">✦</span>
+            </div>
+          </div>
         </div>
       </div>
-      </section>
+    </section>
   );
 }
 
 const VALUES = [
-  { title: "Designed Around You", text: "Every ethima piece is crafted to order with personalised details, metal choices, and lab-grown diamond customisation options." },
-  { title: "Lab-Grown Diamonds", text: "Selected for brilliance, quality, and conscious craftsmanship." },
-  { title: "Made-To-Order", text: "Each piece is produced after confirmation to focus on intentional craftsmanship over mass production." },
-  { title: "Consultation-Led Experience", text: "Book a personalised consultation to design your piece with us." },
+  {
+    title: "Designed Around You",
+    text: "Every ethima piece is crafted to order with personalised details, metal choices, and lab-grown diamond customisation options.",
+  },
+  {
+    title: "Lab-Grown Diamonds",
+    text: "Selected for brilliance, quality, and conscious craftsmanship.",
+  },
+  {
+    title: "Made-To-Order",
+    text: "Each piece is produced after confirmation to focus on intentional craftsmanship over mass production.",
+  },
+  {
+    title: "Consultation-Led Experience",
+    text: "Book a personalised consultation to design your piece with us.",
+  },
 ];
 
 function Values() {
@@ -99,7 +181,7 @@ function Values() {
     <section className="border-y border-border bg-[oklch(0.14_0.022_200/0.6)]">
       <div className="mx-auto grid max-w-[1400px] gap-10 px-6 py-16 md:grid-cols-2 md:divide-x md:divide-border lg:grid-cols-4 lg:px-10">
         {VALUES.map(({ title, text }) => (
-          <div key={title} className="px-6 text-center">
+          <div key={title} className="premium-card px-6 py-3 text-center">
             <h3 className="text-[0.72rem] tracking-[0.28em] uppercase text-ivory">{title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-ivory/65">{text}</p>
           </div>
@@ -113,44 +195,83 @@ function Edit() {
     <section className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10">
       <div className="grid gap-16 lg:grid-cols-2">
         {/* The ethima Edit */}
-        <div className="group relative border border-champagne/15 bg-gradient-to-b from-[oklch(0.18_0.030_200/0.6)] to-[oklch(0.14_0.020_200/0.7)] p-8 md:p-12 transition-all duration-500 hover:border-champagne/30">
+        <div className="premium-card group relative border border-champagne/15 bg-gradient-to-b from-[oklch(0.18_0.030_200/0.6)] to-[oklch(0.14_0.020_200/0.7)] p-8 md:p-12">
           <div className="absolute inset-0 bg-gradient-to-b from-champagne/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
           <div className="relative">
             <p className="eyebrow text-champagne">The ethima Edit</p>
-            <h2 className="mt-5 font-serif text-3xl leading-tight text-ivory md:text-4xl">Design-led everyday fine jewellery.</h2>
+            <h2 className="mt-5 font-serif text-3xl leading-tight text-ivory md:text-4xl">
+              Design-led everyday fine jewellery.
+            </h2>
             <div className="mt-5 h-px w-14 bg-gradient-to-r from-champagne/60 to-transparent" />
             <div className="mt-7 flex flex-wrap gap-x-8 gap-y-3 text-sm text-ivory/80">
-              <Link to="/collections" search={{ collection: "ethima-edit", category: "rings" }} className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full">Rings</Link>
-              <Link to="/collections" search={{ collection: "ethima-edit", category: "earrings" }} className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full">Earrings</Link>
-              <Link to="/collections" search={{ collection: "ethima-edit", category: "pendants" }} className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full">Pendants</Link>
+              <Link
+                to="/collections"
+                search={{ collection: "ethima-edit", category: "rings" }}
+                className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Rings
+              </Link>
+              <Link
+                to="/collections"
+                search={{ collection: "ethima-edit", category: "earrings" }}
+                className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Earrings
+              </Link>
+              <Link
+                to="/collections"
+                search={{ collection: "ethima-edit", category: "pendants" }}
+                className="relative tracking-wide hover:text-champagne transition-colors duration-300 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-champagne/60 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Pendants
+              </Link>
             </div>
             <Link
               to="/collections"
               search={{ collection: "ethima-edit" }}
               className="mt-10 inline-flex items-center gap-3 border border-champagne/50 px-7 py-3.5 text-[0.65rem] tracking-[0.28em] uppercase text-champagne transition-all duration-300 hover:bg-champagne hover:text-primary-foreground hover:border-champagne hover:shadow-lg hover:shadow-champagne/10"
             >
-              Explore the <span className="lowercase-ethima">ethima</span> Edit <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+              Explore the <span className="lowercase-ethima">ethima</span> Edit{" "}
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
           </div>
         </div>
 
         {/* The Personal Edit */}
-        <div className="group relative border border-champagne/15 bg-gradient-to-b from-[oklch(0.18_0.030_200/0.6)] to-[oklch(0.14_0.020_200/0.7)] p-8 md:p-12 transition-all duration-500 hover:border-champagne/30">
+        <div className="premium-card group relative border border-champagne/15 bg-gradient-to-b from-[oklch(0.18_0.030_200/0.6)] to-[oklch(0.14_0.020_200/0.7)] p-8 md:p-12">
           <div className="absolute inset-0 bg-gradient-to-b from-champagne/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
           <div className="relative">
             <p className="eyebrow text-champagne">The Personal Edit</p>
-            <h2 className="mt-5 font-serif text-3xl leading-tight text-ivory md:text-4xl">Meaning-led jewellery designed around your story.</h2>
+            <h2 className="mt-5 font-serif text-3xl leading-tight text-ivory md:text-4xl">
+              Meaning-led jewellery designed around your story.
+            </h2>
             <div className="mt-5 h-px w-14 bg-gradient-to-r from-champagne/60 to-transparent" />
             <ul className="mt-7 space-y-4 text-sm text-ivory/80">
               <li className="flex items-center gap-3">
                 <span className="h-1 w-1 rounded-full bg-champagne/60" />
-                <Link to="/products/$slug" params={{ slug: "initial-pendant" }} className="tracking-wide hover:text-champagne transition-colors duration-300">Initials</Link>
-                <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/50">· Initial Pendant</span>
+                <Link
+                  to="/products/$slug"
+                  params={{ slug: "initial-pendant" }}
+                  className="tracking-wide hover:text-champagne transition-colors duration-300"
+                >
+                  Initials
+                </Link>
+                <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/50">
+                  · Initial Pendant
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="h-1 w-1 rounded-full bg-champagne/60" />
-                <Link to="/products/$slug" params={{ slug: "zodiac-pendant" }} className="tracking-wide hover:text-champagne transition-colors duration-300">Zodiac</Link>
-                <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/50">· Zodiac Pendant</span>
+                <Link
+                  to="/products/$slug"
+                  params={{ slug: "zodiac-pendant" }}
+                  className="tracking-wide hover:text-champagne transition-colors duration-300"
+                >
+                  Zodiac
+                </Link>
+                <span className="text-[0.55rem] tracking-[0.2em] uppercase text-champagne/50">
+                  · Zodiac Pendant
+                </span>
               </li>
               <li className="pt-3 text-[0.6rem] tracking-[0.22em] uppercase text-champagne/40">
                 More personalised collections arriving soon
@@ -162,7 +283,8 @@ function Edit() {
                 search={{ collection: "personal-edit" }}
                 className="inline-flex items-center gap-3 border border-champagne/50 px-7 py-3.5 text-[0.65rem] tracking-[0.28em] uppercase text-champagne transition-all duration-300 hover:bg-champagne hover:text-primary-foreground hover:border-champagne hover:shadow-lg hover:shadow-champagne/10"
               >
-                Explore the Personal Edit <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                Explore the Personal Edit{" "}
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
             </div>
           </div>
@@ -173,7 +295,12 @@ function Edit() {
         to="/customise"
         className="group mt-14 flex items-center justify-between gap-4 border border-champagne/15 bg-gradient-to-r from-[oklch(0.18_0.028_200/0.4)] to-[oklch(0.14_0.020_200/0.5)] px-7 py-5 text-sm text-ivory/80 hover:border-champagne/40 transition-all duration-300"
       >
-        <span>Can't find what you're looking for? <span className="text-champagne underline underline-offset-4 decoration-champagne/40 transition-all duration-300 group-hover:decoration-champagne">Design a bespoke piece with us</span></span>
+        <span>
+          Can't find what you're looking for?{" "}
+          <span className="text-champagne underline underline-offset-4 decoration-champagne/40 transition-all duration-300 group-hover:decoration-champagne">
+            Design a bespoke piece with us
+          </span>
+        </span>
         <ArrowRight className="h-5 w-5 shrink-0 text-champagne transition-transform duration-300 group-hover:translate-x-1" />
       </Link>
     </section>
@@ -181,10 +308,30 @@ function Edit() {
 }
 
 const STEPS = [
-  { icon: MessageSquare, n: "01", title: "Consult", text: "Share your vision, inspiration, and ideas with us." },
-  { icon: Pencil, n: "02", title: "Design & Approval", text: "We create a CAD render and refine every detail until you love it." },
-  { icon: Gem, n: "03", title: "Craft", text: "Your approved design is expertly handcrafted just for you." },
-  { icon: Package, n: "04", title: "Deliver", text: "Your piece, packaged beautifully and delivered with care." },
+  {
+    icon: MessageSquare,
+    n: "01",
+    title: "Consult",
+    text: "Share your vision, inspiration, and ideas with us.",
+  },
+  {
+    icon: Pencil,
+    n: "02",
+    title: "Design & Approval",
+    text: "We create a CAD render and refine every detail until you love it.",
+  },
+  {
+    icon: Gem,
+    n: "03",
+    title: "Craft",
+    text: "Your approved design is expertly handcrafted just for you.",
+  },
+  {
+    icon: Package,
+    n: "04",
+    title: "Deliver",
+    text: "Your piece, packaged beautifully and delivered with care.",
+  },
 ];
 
 function Process() {
@@ -194,7 +341,9 @@ function Process() {
         <div className="px-6 py-20 lg:px-10">
           <div className="text-center">
             <p className="eyebrow">The ethima Experience</p>
-            <h2 className="mt-4 font-serif text-4xl text-ivory md:text-5xl">Your piece, your way.</h2>
+            <h2 className="mt-4 font-serif text-4xl text-ivory md:text-5xl">
+              Your piece, your way.
+            </h2>
           </div>
 
           <div className="mt-14 grid grid-cols-2 gap-y-10 sm:grid-cols-4">
@@ -214,14 +363,22 @@ function Process() {
           </div>
 
           <div className="mt-14 text-center">
-            <Link to="/process" className="inline-flex items-center gap-3 border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all">
+            <Link
+              to="/process"
+              className="inline-flex items-center gap-3 border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
+            >
               Learn more about our process
             </Link>
           </div>
         </div>
 
         <div className="relative hidden min-h-[400px] lg:block">
-          <img src={handImg} alt="Hand wearing ethima ring" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          <img
+            src={handImg}
+            alt="Hand wearing ethima ring"
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[oklch(0.14_0.022_200/0.9)]" />
         </div>
       </div>
@@ -233,6 +390,7 @@ function ProductsCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const posRef = useRef(0);
   const animRef = useRef<number | null>(null);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const ptr = useRef({ down: false, startX: 0, startPos: 0, dragX: 0, moved: false });
 
   const items = PRODUCTS.map((p) => {
@@ -252,6 +410,8 @@ function ProductsCarousel() {
   };
 
   const startScroll = () => {
+    stopScroll();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || document.hidden) return;
     const step = () => {
       const next = posRef.current - 1.5;
       if (next <= -trackW * 2) {
@@ -266,14 +426,35 @@ function ProductsCarousel() {
   };
 
   const stopScroll = () => {
-    if (animRef.current !== null) { cancelAnimationFrame(animRef.current); animRef.current = null; }
+    if (animRef.current !== null) {
+      cancelAnimationFrame(animRef.current);
+      animRef.current = null;
+    }
+    if (resumeTimerRef.current !== null) {
+      clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = null;
+    }
   };
 
-  useEffect(() => { startScroll(); return () => stopScroll(); }, []);
+  useEffect(() => {
+    const onVisibility = () => (document.hidden ? stopScroll() : startScroll());
+    startScroll();
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      stopScroll();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
 
   const onDown = (e: React.PointerEvent) => {
     stopScroll();
-    ptr.current = { down: true, startX: e.clientX, startPos: posRef.current, dragX: 0, moved: false };
+    ptr.current = {
+      down: true,
+      startX: e.clientX,
+      startPos: posRef.current,
+      dragX: 0,
+      moved: false,
+    };
   };
 
   const onMove = (e: React.PointerEvent) => {
@@ -298,14 +479,14 @@ function ProductsCarousel() {
       trackRef.current.style.transition = "transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
       trackRef.current.style.transform = `translateX(${target}px)`;
       posRef.current = target;
-      setTimeout(() => startScroll(), 350);
+      resumeTimerRef.current = setTimeout(() => startScroll(), 350);
     } else {
       if (trackRef.current) {
         trackRef.current.style.transition = "transform 0.25s ease";
         trackRef.current.style.transform = `translateX(${ptr.current.startPos}px)`;
         posRef.current = ptr.current.startPos;
       }
-      setTimeout(() => startScroll(), 250);
+      resumeTimerRef.current = setTimeout(() => startScroll(), 250);
     }
     ptr.current.down = false;
   };
@@ -317,7 +498,10 @@ function ProductsCarousel() {
           <p className="eyebrow">The Collection</p>
           <h2 className="mt-2 font-serif text-3xl text-ivory md:text-4xl">Discover our pieces</h2>
         </div>
-        <Link to="/collections" className="hidden items-center gap-2 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:text-ivory transition-colors sm:inline-flex">
+        <Link
+          to="/collections"
+          className="hidden items-center gap-2 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:text-ivory transition-colors sm:inline-flex"
+        >
           View all <ChevronRight className="h-3.5 w-3.5" />
         </Link>
       </div>
@@ -346,7 +530,9 @@ function ProductsCarousel() {
               params={{ slug: item.slug }}
               className="block shrink-0"
               style={{ width: `${CARD_W}px` }}
-              onClick={(e) => { if (ptr.current.moved) e.preventDefault(); }}
+              onClick={(e) => {
+                if (ptr.current.moved) e.preventDefault();
+              }}
             >
               <div className="aspect-[4/5] overflow-hidden bg-[oklch(0.16_0.025_200)]">
                 <img
@@ -374,7 +560,12 @@ function Journey() {
       <div className="overflow-hidden border border-border bg-[oklch(0.16_0.025_200/0.7)]">
         <div className="grid md:grid-cols-[1fr_1.4fr]">
           <div className="relative aspect-[4/3] md:aspect-auto">
-            <img src={sketchImg} alt="Jewellery sketch" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <img
+              src={sketchImg}
+              alt="Jewellery sketch"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
           </div>
           <div className="grid gap-8 p-8 md:grid-cols-[1.4fr_1fr] md:p-12">
             <div>
@@ -383,14 +574,23 @@ function Journey() {
               <p className="mt-4 max-w-md text-sm leading-relaxed text-ivory/70">
                 Book a one-on-one consultation and let us design a piece that's truly yours.
               </p>
-              <Link to="/consultation" className="mt-6 inline-flex items-center gap-3 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all">
+              <Link
+                to="/consultation"
+                className="mt-6 inline-flex items-center gap-3 border border-champagne/60 px-6 py-3 text-[0.65rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
+              >
                 Book Your Consultation <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <ul className="space-y-4 text-sm text-ivory/80">
-              <li className="flex items-center gap-3"><User className="h-4 w-4 text-champagne" /> Personal consultation</li>
-              <li className="flex items-center gap-3"><Gem className="h-4 w-4 text-champagne" /> Bespoke design support</li>
-              <li className="flex items-center gap-3"><Heart className="h-4 w-4 text-champagne" /> No obligation</li>
+              <li className="flex items-center gap-3">
+                <User className="h-4 w-4 text-champagne" /> Personal consultation
+              </li>
+              <li className="flex items-center gap-3">
+                <Gem className="h-4 w-4 text-champagne" /> Bespoke design support
+              </li>
+              <li className="flex items-center gap-3">
+                <Heart className="h-4 w-4 text-champagne" /> No obligation
+              </li>
             </ul>
           </div>
         </div>
