@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
 import { getProductsByCategory, getProductsByCollection, formatPrice } from "@/data/products";
-import { JsonLd, breadcrumbJsonLd } from "@/components/seo";
+import { JsonLd, breadcrumbJsonLd, itemListJsonLd } from "@/components/seo";
 
 const COLLECTIONS = [
   { value: "all", label: "All" },
@@ -23,20 +23,28 @@ export const Route = createFileRoute("/collections")({
   }),
   head: ({ search }) => {
     const collectionLabel = COLLECTIONS.find((c) => c.value === search.collection)?.label;
-    const title = collectionLabel && search.collection !== "all"
-      ? `${collectionLabel} — ethima`
-      : "Collections — Lab-Grown Diamond Rings, Pendants & Earrings | ethima";
-    const desc = collectionLabel && search.collection !== "all"
-      ? `Browse ${collectionLabel} at ethima. Design-led fine jewellery crafted with lab-grown diamonds.`
-      : "Shop ethima's curated collection of lab-grown diamond jewellery. Rings, pendants, earrings and more crafted to order.";
+    const title =
+      collectionLabel && search.collection !== "all"
+        ? `${collectionLabel} — ethima`
+        : "Collections — Lab-Grown Diamond Rings, Pendants & Earrings | ethima";
+    const desc =
+      collectionLabel && search.collection !== "all"
+        ? `Browse ${collectionLabel} at ethima. Design-led fine jewellery crafted with lab-grown diamonds.`
+        : "Shop ethima's curated collection of lab-grown diamond jewellery. Rings, pendants, earrings and more crafted to order.";
     return {
       meta: [
         { title },
         { name: "description", content: desc },
-        { name: "keywords", content: "lab grown diamond jewellery india, fine jewellery, ethima collections" },
+        {
+          name: "keywords",
+          content: "lab grown diamond jewellery india, fine jewellery, ethima collections",
+        },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        { property: "og:url", content: `https://ethima.in/collections${search.collection !== "all" ? `?collection=${search.collection}` : ""}` },
+        {
+          property: "og:url",
+          content: `https://ethima.in/collections${search.collection !== "all" ? `?collection=${search.collection}` : ""}`,
+        },
         { name: "robots", content: "index, follow" },
       ],
       links: [{ rel: "canonical", href: "https://ethima.in/collections" }],
@@ -49,38 +57,87 @@ function Collections() {
   const { category, collection } = Route.useSearch();
   const navigate = useNavigate();
   const byCollection = getProductsByCollection(collection);
-  const products = category === "all" ? byCollection : byCollection.filter((p) => p.category === category);
+  const products =
+    category === "all" ? byCollection : byCollection.filter((p) => p.category === category);
 
-  const heading = collection === "ethima-edit"
-    ? { eyebrow: "The ethima Edit", title: "Collections", intro: "Design-led everyday fine jewellery crafted with lab-grown diamonds." }
-    : collection === "personal-edit"
-    ? { eyebrow: "The Personal Edit", title: "Collections", intro: "Meaning-led jewellery designed around your story." }
-    : { eyebrow: "The ethima Edit", title: "Collections", intro: "Minimal pieces. Meaningful stories. A curated edit of fine jewellery that blends simplicity with intention." };
+  const heading =
+    collection === "ethima-edit"
+      ? {
+          eyebrow: "The ethima Edit",
+          title: "Collections",
+          intro: "Design-led everyday fine jewellery crafted with lab-grown diamonds.",
+        }
+      : collection === "personal-edit"
+        ? {
+            eyebrow: "The Personal Edit",
+            title: "Collections",
+            intro: "Meaning-led jewellery designed around your story.",
+          }
+        : {
+            eyebrow: "The ethima Edit",
+            title: "Collections",
+            intro:
+              "Minimal pieces. Meaningful stories. A curated edit of fine jewellery that blends simplicity with intention.",
+          };
 
-  const setCollection = (value: string) => navigate({ to: "/collections", search: { collection: value === "all" ? undefined : value, category: undefined } });
-  const setCategory = (value: string) => navigate({ to: "/collections", search: { collection: collection === "all" ? undefined : collection, category: value === "all" ? undefined : value } });
+  const setCollection = (value: string) =>
+    navigate({
+      to: "/collections",
+      search: { collection: value === "all" ? undefined : value, category: undefined },
+    });
+  const setCategory = (value: string) =>
+    navigate({
+      to: "/collections",
+      search: {
+        collection: collection === "all" ? undefined : collection,
+        category: value === "all" ? undefined : value,
+      },
+    });
 
   return (
     <PageShell eyebrow={heading.eyebrow} title={heading.title} intro={heading.intro}>
-      <JsonLd data={breadcrumbJsonLd([
-        { name: "Home", url: "/" },
-        { name: collection === "all" ? "All Collections" : heading.eyebrow, url: `/collections${collection !== "all" ? `?collection=${collection}` : ""}` },
-      ])} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", url: "/" },
+          {
+            name: collection === "all" ? "All Collections" : heading.eyebrow,
+            url: `/collections${collection !== "all" ? `?collection=${collection}` : ""}`,
+          },
+        ])}
+      />
+      <JsonLd
+        data={itemListJsonLd(
+          products.map((product, index) => ({
+            name: product.name,
+            url: `/products/${product.slug}`,
+            image: Object.values(product.images).flat()[0],
+            position: index + 1,
+          })),
+        )}
+      />
       <div className="flex flex-wrap gap-2 mb-6">
         {COLLECTIONS.map((col) => {
           const parts = col.label.split("ethima");
           return (
-          <button
-            key={col.value}
-            onClick={() => setCollection(col.value)}
-            className={`px-5 py-2.5 text-[0.65rem] tracking-[0.28em] uppercase transition-all ${
-              collection === col.value
-                ? "bg-champagne text-primary-foreground"
-                : "border border-champagne/30 text-ivory/80 hover:bg-champagne/10"
-            }`}
-          >
-            {parts.length > 1 ? <>{parts[0]}<span className="lowercase-ethima">ethima</span>{parts[1]}</> : col.label}
-          </button>
+            <button
+              key={col.value}
+              onClick={() => setCollection(col.value)}
+              className={`px-5 py-2.5 text-[0.65rem] tracking-[0.28em] uppercase transition-all ${
+                collection === col.value
+                  ? "bg-champagne text-primary-foreground"
+                  : "border border-champagne/30 text-ivory/80 hover:bg-champagne/10"
+              }`}
+            >
+              {parts.length > 1 ? (
+                <>
+                  {parts[0]}
+                  <span className="lowercase-ethima">ethima</span>
+                  {parts[1]}
+                </>
+              ) : (
+                col.label
+              )}
+            </button>
           );
         })}
       </div>

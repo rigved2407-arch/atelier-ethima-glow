@@ -66,14 +66,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ethima — Personalised Fine Jewellery" },
-      { name: "description", content: "Lab-grown diamond jewellery, made around you." },
-      { property: "og:title", content: "ethima — Personalised Fine Jewellery" },
-      { property: "og:description", content: "Lab-grown diamond jewellery, made around you." },
+      { title: "ethima | Personalised Lab-Grown Diamond Jewellery in India" },
+      {
+        name: "description",
+        content:
+          "Shop personalised lab-grown diamond jewellery in India. Made-to-order rings, pendants and earrings designed around your story by ethima.",
+      },
+      {
+        property: "og:title",
+        content: "ethima | Personalised Lab-Grown Diamond Jewellery in India",
+      },
+      {
+        property: "og:description",
+        content: "Made-to-order lab-grown diamond jewellery designed around your story.",
+      },
+      { property: "og:site_name", content: "ethima" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "ethima — Personalised Fine Jewellery" },
-      { name: "twitter:description", content: "Lab-grown diamond jewellery, made around you." },
+      {
+        name: "twitter:title",
+        content: "ethima | Personalised Lab-Grown Diamond Jewellery in India",
+      },
+      {
+        name: "twitter:description",
+        content: "Made-to-order lab-grown diamond jewellery designed around your story.",
+      },
       { property: "og:image", content: "https://ethima.in/og-image.jpg" },
       { name: "twitter:image", content: "https://ethima.in/og-image.jpg" },
       { property: "og:url", content: "https://ethima.in" },
@@ -100,7 +117,7 @@ import { Toaster } from "sonner";
 function WhatsAppButton() {
   const phone = "918347867232";
   const message = encodeURIComponent(
-    "Hi! I found you on your website and would love to know more about your jewellery."
+    "Hi! I found you on your website and would love to know more about your jewellery.",
   );
   const url = `https://wa.me/${phone}?text=${message}`;
 
@@ -124,7 +141,8 @@ function WhatsAppButton() {
         backgroundColor: "#25D366",
         color: "#ffffff",
         boxShadow: "0 0 0 1px rgba(37,211,102,0.2), 0 8px 32px -8px rgba(37,211,102,0.55)",
-        transition: "transform 0.3s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.3s cubic-bezier(0.2,0.7,0.2,1)",
+        transition:
+          "transform 0.3s cubic-bezier(0.2,0.7,0.2,1), box-shadow 0.3s cubic-bezier(0.2,0.7,0.2,1)",
         textDecoration: "none",
       }}
       className="whatsapp-fab group"

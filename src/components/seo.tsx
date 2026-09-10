@@ -1,25 +1,27 @@
-import type { ReactNode } from "react";
-
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
   );
 }
 
-const SITE_URL = "https://ethima.in";
+export const SITE_URL = "https://ethima.in";
+export const SITE_URL_CONST = SITE_URL;
 const ORG_NAME = "ethima";
+const SOCIAL_PROFILES = ["https://www.instagram.com/ethima.in", "https://wa.me/918347867232"];
 
 export function orgJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "JewelryStore"],
     name: ORG_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/og-image.jpg`,
+    image: `${SITE_URL}/og-image.jpg`,
     description: "Personalised fine jewellery crafted with lab-grown diamonds in India.",
+    priceRange: "₹₹",
+    telephone: "+91-8347867232",
+    email: "hello@ethima.in",
+    areaServed: { "@type": "Country", name: "India" },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-8347867232",
@@ -27,10 +29,7 @@ export function orgJsonLd() {
       email: "hello@ethima.in",
       availableLanguage: ["English", "Hindi"],
     },
-    sameAs: [
-      "https://www.instagram.com/ethima.in",
-      "https://wa.me/918347867232",
-    ],
+    sameAs: SOCIAL_PROFILES,
   };
 }
 
@@ -40,14 +39,8 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     name: ORG_NAME,
     url: SITE_URL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/collections?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    inLanguage: "en-IN",
+    publisher: { "@type": "Organization", name: ORG_NAME, url: SITE_URL },
   };
 }
 
@@ -69,25 +62,46 @@ export function productJsonLd(product: {
   description: string;
   image: string;
   sku: string;
+  slug: string;
   price: number;
   category: string;
+  brand?: string;
 }) {
+  const productUrl = `${SITE_URL}/products/${product.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.image,
+    image: product.image ? [product.image] : undefined,
     sku: product.sku,
-    brand: { "@type": "Brand", name: ORG_NAME },
+    category: product.category,
+    brand: { "@type": "Brand", name: product.brand || ORG_NAME },
+    url: productUrl,
     offers: {
       "@type": "Offer",
-      price: product.price,
+      url: productUrl,
+      price: product.price.toFixed(2),
       priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-      url: `${SITE_URL}/products/${product.sku}`,
+      availability: "https://schema.org/MadeToOrder",
+      itemCondition: "https://schema.org/NewCondition",
     },
-    category: product.category,
+  };
+}
+
+export function itemListJsonLd(
+  items: { name: string; url: string; image?: string; position: number }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item) => ({
+      "@type": "ListItem",
+      position: item.position,
+      name: item.name,
+      url: `${SITE_URL}${item.url}`,
+      ...(item.image ? { image: `${SITE_URL}${item.image}` } : {}),
+    })),
   };
 }
 
@@ -147,13 +161,13 @@ export function seoMeta({
     tags.push({ name: "twitter:image", content: image });
   }
   if (url) tags.push({ property: "og:url", content: url });
-  if (noindex) tags.push({ name: "robots", content: "noindex, nofollow" });
-  else tags.push({ name: "robots", content: "index, follow" });
+  tags.push({
+    name: "robots",
+    content: noindex ? "noindex, nofollow" : "index, follow",
+  });
   return tags;
 }
 
 export function canonicalLink(url: string) {
   return { rel: "canonical", href: `${SITE_URL}${url}` };
 }
-
-export const SITE_URL_CONST = SITE_URL;
