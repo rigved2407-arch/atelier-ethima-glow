@@ -84,7 +84,6 @@ function Hero() {
 
       <div className="mx-auto grid min-h-[92vh] max-w-[1400px] items-center gap-12 px-6 pt-32 pb-24 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
         <div className="relative z-10 max-w-2xl">
-          <p className="eyebrow animate-fade-up">Independent fine jewellery · Bengaluru / India</p>
           <h1 className="mt-7 max-w-[13ch] font-serif text-[2.9rem] leading-[0.98] text-ivory md:text-6xl lg:text-[5.8rem] animate-fade-up delay-150">
             <span className="italic font-light">Designed</span> around you,
             <br />
