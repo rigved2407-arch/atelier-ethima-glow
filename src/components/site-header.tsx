@@ -42,7 +42,8 @@ export function SiteHeader() {
     timeoutRef.current = setTimeout(() => setCollectionsOpen(false), 150);
   };
 
-  const iconClass = "inline-flex h-10 w-10 items-center justify-center rounded-full border border-champagne/40 text-champagne transition-colors hover:bg-champagne hover:text-primary-foreground";
+  const iconClass =
+    "inline-flex h-10 w-10 items-center justify-center rounded-full border border-champagne/40 text-champagne transition-colors hover:bg-champagne hover:text-primary-foreground";
 
   return (
     <header
@@ -52,10 +53,10 @@ export function SiteHeader() {
           : "bg-transparent"
       }`}
     >
-<div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3 lg:px-10">
-       <Link to="/" className="group flex items-center leading-none">
-  <img src={ethimaLogo} alt="ethima" className="h-28 md:h-36 w-auto object-contain" />
-</Link>
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3 lg:px-10">
+        <Link to="/" className="group flex items-center leading-none">
+          <img src={ethimaLogo} alt="ethima" className="h-28 md:h-36 w-auto object-contain" />
+        </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
           <div
@@ -69,7 +70,9 @@ export function SiteHeader() {
               className="flex items-center gap-1 text-[0.7rem] tracking-[0.28em] uppercase text-ivory/85 transition-colors hover:text-champagne"
             >
               Collections
-              <ChevronDown className={`h-3 w-3 transition-transform duration-300 ${collectionsOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                className={`h-3 w-3 transition-transform duration-300 ${collectionsOpen ? "rotate-180" : ""}`}
+              />
             </Link>
 
             <div
@@ -207,7 +210,11 @@ function CartBadge() {
 
 function CartIcon() {
   return (
-    <Link to="/cart" aria-label="Cart" className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-champagne/40 text-champagne transition-colors hover:bg-champagne hover:text-primary-foreground">
+    <Link
+      to="/cart"
+      aria-label="Cart"
+      className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-champagne/40 text-champagne transition-colors hover:bg-champagne hover:text-primary-foreground"
+    >
       <ShoppingCart className="h-4 w-4" />
       <CartBadge />
     </Link>

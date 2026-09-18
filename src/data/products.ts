@@ -1,31 +1,31 @@
 export interface ProductVariant {
-  sku: string
-  metal: string
-  weight: string
-  diamondDetails: string
-  totalCarat: number
-  price: number
+  sku: string;
+  metal: string;
+  weight: string;
+  diamondDetails: string;
+  totalCarat: number;
+  price: number;
 }
 
 export interface Product {
-  id: string
-  slug: string
-  name: string
-  category: "rings" | "pendants" | "earrings" | "bracelets"
-  collection: string
-  description: string
-  shortDescription: string
-  designType: string
-  stoneType: string
-  stoneShapeOptions: string
-  sizeOptions: string
-  customizable: boolean
-  inventoryModel: string
-  launchPriority: string
-  primaryChannel: string
-  notes: string
-  images: Record<string, string[]>
-  variants: ProductVariant[]
+  id: string;
+  slug: string;
+  name: string;
+  category: "rings" | "pendants" | "earrings" | "bracelets";
+  collection: string;
+  description: string;
+  shortDescription: string;
+  designType: string;
+  stoneType: string;
+  stoneShapeOptions: string;
+  sizeOptions: string;
+  customizable: boolean;
+  inventoryModel: string;
+  launchPriority: string;
+  primaryChannel: string;
+  notes: string;
+  images: Record<string, string[]>;
+  variants: ProductVariant[];
 }
 
 export const PRODUCTS: Product[] = [
@@ -48,9 +48,27 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + Instagram",
     notes: "Hero everyday earrings; keep render clean and side/front angle",
     images: {
-      silver: ["/products/ethima-diamond-hoops/silver-1.png", "/products/ethima-diamond-hoops/silver-2.png", "/products/ethima-diamond-hoops/silver-3.png", "/products/ethima-diamond-hoops/silver-4.png", "/products/ethima-diamond-hoops/silver-5.png"],
-      gold: ["/products/ethima-diamond-hoops/gold-1.png", "/products/ethima-diamond-hoops/gold-2.png", "/products/ethima-diamond-hoops/gold-3.png", "/products/ethima-diamond-hoops/gold-4.png", "/products/ethima-diamond-hoops/gold-5.png"],
-      vermeil: ["/products/ethima-diamond-hoops/silver-1.png", "/products/ethima-diamond-hoops/silver-2.png", "/products/ethima-diamond-hoops/silver-3.png", "/products/ethima-diamond-hoops/silver-4.png", "/products/ethima-diamond-hoops/silver-5.png"],
+      silver: [
+        "/products/ethima-diamond-hoops/silver-1.png",
+        "/products/ethima-diamond-hoops/silver-2.png",
+        "/products/ethima-diamond-hoops/silver-3.png",
+        "/products/ethima-diamond-hoops/silver-4.png",
+        "/products/ethima-diamond-hoops/silver-5.png",
+      ],
+      gold: [
+        "/products/ethima-diamond-hoops/gold-1.png",
+        "/products/ethima-diamond-hoops/gold-2.png",
+        "/products/ethima-diamond-hoops/gold-3.png",
+        "/products/ethima-diamond-hoops/gold-4.png",
+        "/products/ethima-diamond-hoops/gold-5.png",
+      ],
+      vermeil: [
+        "/products/ethima-diamond-hoops/silver-1.png",
+        "/products/ethima-diamond-hoops/silver-2.png",
+        "/products/ethima-diamond-hoops/silver-3.png",
+        "/products/ethima-diamond-hoops/silver-4.png",
+        "/products/ethima-diamond-hoops/silver-5.png",
+      ],
     },
     variants: [
       {
@@ -98,9 +116,21 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + Instagram",
     notes: "Use as soft minimal office-to-evening piece",
     images: {
-      silver: ["/products/nova-earrings/silver-1.png", "/products/nova-earrings/silver-2.png", "/products/nova-earrings/silver-3.png"],
-      gold: ["/products/nova-earrings/gold-1.png", "/products/nova-earrings/gold-2.png", "/products/nova-earrings/gold-3.png"],
-      vermeil: ["/products/nova-earrings/silver-1.png", "/products/nova-earrings/silver-2.png", "/products/nova-earrings/silver-3.png"],
+      silver: [
+        "/products/nova-earrings/silver-1.png",
+        "/products/nova-earrings/silver-2.png",
+        "/products/nova-earrings/silver-3.png",
+      ],
+      gold: [
+        "/products/nova-earrings/gold-1.png",
+        "/products/nova-earrings/gold-2.png",
+        "/products/nova-earrings/gold-3.png",
+      ],
+      vermeil: [
+        "/products/nova-earrings/silver-1.png",
+        "/products/nova-earrings/silver-2.png",
+        "/products/nova-earrings/silver-3.png",
+      ],
     },
     variants: [
       {
@@ -148,9 +178,21 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + Instagram",
     notes: "Ideal trust-building basic; include pair view",
     images: {
-      silver: ["/products/aster-diamond-stud-earrings/silver-1.png", "/products/aster-diamond-stud-earrings/silver-2.png", "/products/aster-diamond-stud-earrings/silver-3.png"],
-      gold: ["/products/aster-diamond-stud-earrings/gold-1.png", "/products/aster-diamond-stud-earrings/gold-2.png", "/products/aster-diamond-stud-earrings/gold-3.png"],
-      vermeil: ["/products/aster-diamond-stud-earrings/silver-1.png", "/products/aster-diamond-stud-earrings/silver-2.png", "/products/aster-diamond-stud-earrings/silver-3.png"],
+      silver: [
+        "/products/aster-diamond-stud-earrings/silver-1.png",
+        "/products/aster-diamond-stud-earrings/silver-2.png",
+        "/products/aster-diamond-stud-earrings/silver-3.png",
+      ],
+      gold: [
+        "/products/aster-diamond-stud-earrings/gold-1.png",
+        "/products/aster-diamond-stud-earrings/gold-2.png",
+        "/products/aster-diamond-stud-earrings/gold-3.png",
+      ],
+      vermeil: [
+        "/products/aster-diamond-stud-earrings/silver-1.png",
+        "/products/aster-diamond-stud-earrings/silver-2.png",
+        "/products/aster-diamond-stud-earrings/silver-3.png",
+      ],
     },
     variants: [
       {
@@ -198,9 +240,24 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + Consultation",
     notes: "Use for customisation messaging; metal, size, stone shape",
     images: {
-      silver: ["/products/elara-solitaire-ring/silver-1.png", "/products/elara-solitaire-ring/silver-2.png", "/products/elara-solitaire-ring/silver-3.png", "/products/elara-solitaire-ring/silver-4.png"],
-      gold: ["/products/elara-solitaire-ring/gold-1.png", "/products/elara-solitaire-ring/gold-2.png", "/products/elara-solitaire-ring/gold-3.png", "/products/elara-solitaire-ring/gold-4.png"],
-      vermeil: ["/products/elara-solitaire-ring/silver-1.png", "/products/elara-solitaire-ring/silver-2.png", "/products/elara-solitaire-ring/silver-3.png", "/products/elara-solitaire-ring/silver-4.png"],
+      silver: [
+        "/products/elara-solitaire-ring/silver-1.png",
+        "/products/elara-solitaire-ring/silver-2.png",
+        "/products/elara-solitaire-ring/silver-3.png",
+        "/products/elara-solitaire-ring/silver-4.png",
+      ],
+      gold: [
+        "/products/elara-solitaire-ring/gold-1.png",
+        "/products/elara-solitaire-ring/gold-2.png",
+        "/products/elara-solitaire-ring/gold-3.png",
+        "/products/elara-solitaire-ring/gold-4.png",
+      ],
+      vermeil: [
+        "/products/elara-solitaire-ring/silver-1.png",
+        "/products/elara-solitaire-ring/silver-2.png",
+        "/products/elara-solitaire-ring/silver-3.png",
+        "/products/elara-solitaire-ring/silver-4.png",
+      ],
     },
     variants: [
       {
@@ -248,9 +305,24 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + Instagram",
     notes: "Keep simple and accessible; everyday self-reward positioning",
     images: {
-      silver: ["/products/luna-ring/silver-1.png", "/products/luna-ring/silver-2.png", "/products/luna-ring/silver-3.png", "/products/luna-ring/silver-4.png"],
-      gold: ["/products/luna-ring/gold-1.png", "/products/luna-ring/gold-2.png", "/products/luna-ring/gold-3.png", "/products/luna-ring/gold-4.png"],
-      vermeil: ["/products/luna-ring/silver-1.png", "/products/luna-ring/silver-2.png", "/products/luna-ring/silver-3.png", "/products/luna-ring/silver-4.png"],
+      silver: [
+        "/products/luna-ring/silver-1.png",
+        "/products/luna-ring/silver-2.png",
+        "/products/luna-ring/silver-3.png",
+        "/products/luna-ring/silver-4.png",
+      ],
+      gold: [
+        "/products/luna-ring/gold-1.png",
+        "/products/luna-ring/gold-2.png",
+        "/products/luna-ring/gold-3.png",
+        "/products/luna-ring/gold-4.png",
+      ],
+      vermeil: [
+        "/products/luna-ring/silver-1.png",
+        "/products/luna-ring/silver-2.png",
+        "/products/luna-ring/silver-3.png",
+        "/products/luna-ring/silver-4.png",
+      ],
     },
     variants: [
       {
@@ -298,9 +370,18 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + Instagram",
     notes: "Show with chain and close-up render",
     images: {
-      silver: ["/products/elan-solitaire-pendant/silver-1.png", "/products/elan-solitaire-pendant/silver-2.png"],
-      gold: ["/products/elan-solitaire-pendant/gold-1.png", "/products/elan-solitaire-pendant/gold-2.png"],
-      vermeil: ["/products/elan-solitaire-pendant/silver-1.png", "/products/elan-solitaire-pendant/silver-2.png"],
+      silver: [
+        "/products/elan-solitaire-pendant/silver-1.png",
+        "/products/elan-solitaire-pendant/silver-2.png",
+      ],
+      gold: [
+        "/products/elan-solitaire-pendant/gold-1.png",
+        "/products/elan-solitaire-pendant/gold-2.png",
+      ],
+      vermeil: [
+        "/products/elan-solitaire-pendant/silver-1.png",
+        "/products/elan-solitaire-pendant/silver-2.png",
+      ],
     },
     variants: [
       {
@@ -335,7 +416,8 @@ export const PRODUCTS: Product[] = [
     name: "Initial Pendant",
     category: "pendants",
     collection: "The Personal Edit",
-    description: "A personal piece designed around your identity. The Initial Pendant brings together minimal design and lab-grown diamond detailing to create a meaningful everyday necklace that feels intimate, elegant, and uniquely yours.",
+    description:
+      "A personal piece designed around your identity. The Initial Pendant brings together minimal design and lab-grown diamond detailing to create a meaningful everyday necklace that feels intimate, elegant, and uniquely yours.",
     shortDescription: "Custom initial pendant with lab-grown diamond detail.",
     designType: "Initial / Alphabet",
     stoneType: "Lab-grown diamonds",
@@ -347,14 +429,59 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + WhatsApp",
     notes: "Strong WhatsApp/social product; ask customer for initial",
     images: {
-      silver: ["/products/initial-pendant/silver-1.png", "/products/initial-pendant/silver-2.png", "/products/initial-pendant/silver-3.png", "/products/initial-pendant/silver-4.png", "/products/initial-pendant/silver-5.png", "/products/initial-pendant/silver-6.png", "/products/initial-pendant/silver-7.png"],
-      gold: ["/products/initial-pendant/gold-1.png", "/products/initial-pendant/gold-2.png", "/products/initial-pendant/gold-3.png", "/products/initial-pendant/gold-4.png", "/products/initial-pendant/gold-5.png", "/products/initial-pendant/gold-6.png", "/products/initial-pendant/gold-7.png"],
-      vermeil: ["/products/initial-pendant/silver-1.png", "/products/initial-pendant/silver-2.png", "/products/initial-pendant/silver-3.png", "/products/initial-pendant/silver-4.png", "/products/initial-pendant/silver-5.png", "/products/initial-pendant/silver-6.png", "/products/initial-pendant/silver-7.png"],
+      silver: [
+        "/products/initial-pendant/silver-1.png",
+        "/products/initial-pendant/silver-2.png",
+        "/products/initial-pendant/silver-3.png",
+        "/products/initial-pendant/silver-4.png",
+        "/products/initial-pendant/silver-5.png",
+        "/products/initial-pendant/silver-6.png",
+        "/products/initial-pendant/silver-7.png",
+      ],
+      gold: [
+        "/products/initial-pendant/gold-1.png",
+        "/products/initial-pendant/gold-2.png",
+        "/products/initial-pendant/gold-3.png",
+        "/products/initial-pendant/gold-4.png",
+        "/products/initial-pendant/gold-5.png",
+        "/products/initial-pendant/gold-6.png",
+        "/products/initial-pendant/gold-7.png",
+      ],
+      vermeil: [
+        "/products/initial-pendant/silver-1.png",
+        "/products/initial-pendant/silver-2.png",
+        "/products/initial-pendant/silver-3.png",
+        "/products/initial-pendant/silver-4.png",
+        "/products/initial-pendant/silver-5.png",
+        "/products/initial-pendant/silver-6.png",
+        "/products/initial-pendant/silver-7.png",
+      ],
     },
     variants: [
-      { sku: "ETH-PD-001-SIL", metal: "925 Silver", weight: "4.0 gms", diamondDetails: "3.00 mm x 10 pcs", totalCarat: 1.01, price: 17999 },
-      { sku: "ETH-PD-001-VRM", metal: "Gold Vermeil on 925 Silver", weight: "4.0 gms", diamondDetails: "3.00 mm x 10 pcs", totalCarat: 1.01, price: 21999 },
-      { sku: "ETH-PD-001-10K", metal: "10KT Gold", weight: "4.0 gms", diamondDetails: "3.00 mm x 10 pcs", totalCarat: 1.01, price: 50499 },
+      {
+        sku: "ETH-PD-001-SIL",
+        metal: "925 Silver",
+        weight: "4.0 gms",
+        diamondDetails: "3.00 mm x 10 pcs",
+        totalCarat: 1.01,
+        price: 17999,
+      },
+      {
+        sku: "ETH-PD-001-VRM",
+        metal: "Gold Vermeil on 925 Silver",
+        weight: "4.0 gms",
+        diamondDetails: "3.00 mm x 10 pcs",
+        totalCarat: 1.01,
+        price: 21999,
+      },
+      {
+        sku: "ETH-PD-001-10K",
+        metal: "10KT Gold",
+        weight: "4.0 gms",
+        diamondDetails: "3.00 mm x 10 pcs",
+        totalCarat: 1.01,
+        price: 50499,
+      },
     ],
   },
   {
@@ -376,10 +503,34 @@ export const PRODUCTS: Product[] = [
     primaryChannel: "Website + WhatsApp",
     notes: "Use for gifting angle and personalisation campaign",
     images: {
-      silver: ["/products/zodiac-pendant/silver-1.png", "/products/zodiac-pendant/silver-2.png", "/products/zodiac-pendant/silver-3.png", "/products/zodiac-pendant/silver-4.png", "/products/zodiac-pendant/silver-5.png"],
-      gold: ["/products/zodiac-pendant/gold-1.png", "/products/zodiac-pendant/gold-2.png", "/products/zodiac-pendant/gold-3.png", "/products/zodiac-pendant/gold-4.png", "/products/zodiac-pendant/gold-5.png"],
-      editorial: ["/products/zodiac-pendant/editorial-1.png", "/products/zodiac-pendant/editorial-2.png", "/products/zodiac-pendant/editorial-3.png", "/products/zodiac-pendant/editorial-4.png", "/products/zodiac-pendant/editorial-5.png"],
-      vermeil: ["/products/zodiac-pendant/silver-1.png", "/products/zodiac-pendant/silver-2.png", "/products/zodiac-pendant/silver-3.png", "/products/zodiac-pendant/silver-4.png", "/products/zodiac-pendant/silver-5.png"],
+      silver: [
+        "/products/zodiac-pendant/silver-1.png",
+        "/products/zodiac-pendant/silver-2.png",
+        "/products/zodiac-pendant/silver-3.png",
+        "/products/zodiac-pendant/silver-4.png",
+        "/products/zodiac-pendant/silver-5.png",
+      ],
+      gold: [
+        "/products/zodiac-pendant/gold-1.png",
+        "/products/zodiac-pendant/gold-2.png",
+        "/products/zodiac-pendant/gold-3.png",
+        "/products/zodiac-pendant/gold-4.png",
+        "/products/zodiac-pendant/gold-5.png",
+      ],
+      editorial: [
+        "/products/zodiac-pendant/editorial-1.png",
+        "/products/zodiac-pendant/editorial-2.png",
+        "/products/zodiac-pendant/editorial-3.png",
+        "/products/zodiac-pendant/editorial-4.png",
+        "/products/zodiac-pendant/editorial-5.png",
+      ],
+      vermeil: [
+        "/products/zodiac-pendant/silver-1.png",
+        "/products/zodiac-pendant/silver-2.png",
+        "/products/zodiac-pendant/silver-3.png",
+        "/products/zodiac-pendant/silver-4.png",
+        "/products/zodiac-pendant/silver-5.png",
+      ],
     },
     variants: [
       {
@@ -408,28 +559,28 @@ export const PRODUCTS: Product[] = [
       },
     ],
   },
-]
+];
 
 export function getProductsByCategory(category: string): Product[] {
-  if (!category || category === "all") return PRODUCTS
-  return PRODUCTS.filter((p) => p.category === category)
+  if (!category || category === "all") return PRODUCTS;
+  return PRODUCTS.filter((p) => p.category === category);
 }
 
 export function getProductsByCollection(collectionSlug: string): Product[] {
-  if (!collectionSlug || collectionSlug === "all") return PRODUCTS
+  if (!collectionSlug || collectionSlug === "all") return PRODUCTS;
   const collectionMap: Record<string, string[]> = {
     "ethima-edit": ["The Everyday Edit", "The ethima Signature"],
     "personal-edit": ["The Personal Edit"],
-  }
-  const collections = collectionMap[collectionSlug]
-  if (!collections) return PRODUCTS
-  return PRODUCTS.filter((p) => collections.includes(p.collection))
+  };
+  const collections = collectionMap[collectionSlug];
+  if (!collections) return PRODUCTS;
+  return PRODUCTS.filter((p) => collections.includes(p.collection));
 }
 
 export function getProductBySlug(slug: string): Product | undefined {
-  return PRODUCTS.find((p) => p.slug === slug)
+  return PRODUCTS.find((p) => p.slug === slug);
 }
 
 export function formatPrice(price: number): string {
-  return `₹${price.toLocaleString("en-IN")}`
+  return `₹${price.toLocaleString("en-IN")}`;
 }

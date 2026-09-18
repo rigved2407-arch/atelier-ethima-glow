@@ -10,10 +10,22 @@ export const Route = createFileRoute("/customise")({
   head: () => ({
     meta: [
       { title: "Customise Your Jewellery — ethima | Lab-Grown Diamond Design" },
-      { name: "description", content: "Customise your fine jewellery at ethima. Choose metal, diamond shape, size, engraving, and more. Create a piece that's unmistakably yours." },
-      { name: "keywords", content: "custom jewellery india, personalised diamond jewellery, bespoke jewellery design, customise ring online, ethima custom order" },
+      {
+        name: "description",
+        content:
+          "Customise your fine jewellery at ethima. Choose metal, diamond shape, size, engraving, and more. Create a piece that's unmistakably yours.",
+      },
+      {
+        name: "keywords",
+        content:
+          "custom jewellery india, personalised diamond jewellery, bespoke jewellery design, customise ring online, ethima custom order",
+      },
       { property: "og:title", content: "Customise Your Piece — ethima" },
-      { property: "og:description", content: "Choose metal, diamond shape, size, engraving — create a piece that's truly yours." },
+      {
+        property: "og:description",
+        content:
+          "Choose metal, diamond shape, size, engraving — create a piece that's truly yours.",
+      },
       { name: "robots", content: "index, follow" },
     ],
     links: [{ rel: "canonical", href: "https://ethima.in/customise" }],
@@ -21,7 +33,7 @@ export const Route = createFileRoute("/customise")({
   component: Customise,
 });
 
-const PIECES = ["Ring", "Pendant", "Necklace", "Earrings",];
+const PIECES = ["Ring", "Pendant", "Necklace", "Earrings"];
 const METALS = ["925 Sterling Silver", "10KT Yellow Gold", "Gold Vermeil on 925 Silver"];
 const SHAPES = ["Round", "Oval", "Pear", "Emerald", "Cushion", "Marquise"];
 
@@ -64,13 +76,19 @@ function Customise() {
     const { error } = await supabase.storage
       .from("reference-images")
       .upload(path, imageFile, { upsert: false });
-    if (error) { toast.error("Image upload failed: " + error.message); return null; }
+    if (error) {
+      toast.error("Image upload failed: " + error.message);
+      return null;
+    }
     return path;
   }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!piece) { toast.error("Please select a piece type"); return; }
+    if (!piece) {
+      toast.error("Please select a piece type");
+      return;
+    }
     setBusy(true);
 
     const imageUrl = await uploadImage();
@@ -90,7 +108,10 @@ function Customise() {
 
     setBusy(false);
     if (error) toast.error(error.message);
-    else { setSent(true); toast.success("Request sent — we'll be in touch."); }
+    else {
+      setSent(true);
+      toast.success("Request sent — we'll be in touch.");
+    }
   }
 
   return (
@@ -101,7 +122,6 @@ function Customise() {
     >
       <form className="grid gap-12 lg:grid-cols-2" onSubmit={submit}>
         <div className="space-y-10">
-
           {/* Piece Type */}
           <Field label="What would you like to customise?">
             <div className="grid grid-cols-3 gap-3">
@@ -117,7 +137,9 @@ function Customise() {
           <Field label="Metal">
             <div className="flex flex-wrap gap-3">
               {METALS.map((m) => (
-                <Option key={m} active={metal === m} onClick={() => setMetal(m)}>{m}</Option>
+                <Option key={m} active={metal === m} onClick={() => setMetal(m)}>
+                  {m}
+                </Option>
               ))}
             </div>
           </Field>
@@ -126,7 +148,9 @@ function Customise() {
           <Field label="Diamond Shape">
             <div className="grid grid-cols-3 gap-3">
               {SHAPES.map((s) => (
-                <Option key={s} active={shape === s} onClick={() => setShape(s)}>{s}</Option>
+                <Option key={s} active={shape === s} onClick={() => setShape(s)}>
+                  {s}
+                </Option>
               ))}
             </div>
           </Field>
@@ -139,14 +163,15 @@ function Customise() {
               className="w-full border border-input bg-transparent px-4 py-3 text-sm text-ivory focus:border-champagne outline-none"
             >
               {["US 4", "US 5", "US 6", "US 7", "US 8", "US 9", "US 10"].map((s) => (
-                <option key={s} className="bg-background">{s}</option>
+                <option key={s} className="bg-background">
+                  {s}
+                </option>
               ))}
             </select>
           </Field>
         </div>
 
         <div className="space-y-10">
-
           {/* Reference Image Upload */}
           <Field label="Reference Image (optional)">
             <div
@@ -185,9 +210,7 @@ function Customise() {
                     <p className="text-xs tracking-[0.18em] uppercase text-ivory/70">
                       Upload a reference image
                     </p>
-                    <p className="mt-1 text-[0.65rem] text-ivory/40">
-                      JPG, PNG or WEBP · Max 5MB
-                    </p>
+                    <p className="mt-1 text-[0.65rem] text-ivory/40">JPG, PNG or WEBP · Max 5MB</p>
                   </div>
                 </button>
               )}
@@ -233,11 +256,25 @@ function Customise() {
           <div className="border border-border p-6 bg-[oklch(0.16_0.025_200/0.6)]">
             <p className="eyebrow">Your selection</p>
             <ul className="mt-4 space-y-2 text-sm text-ivory/80">
-              {piece && <li><span className="text-ivory/50">Piece —</span> {piece}</li>}
-              <li><span className="text-ivory/50">Metal —</span> {metal}</li>
-              <li><span className="text-ivory/50">Shape —</span> {shape}</li>
-              <li><span className="text-ivory/50">Size —</span> {size}</li>
-              {engraving && <li><span className="text-ivory/50">Engraving —</span> "{engraving}"</li>}
+              {piece && (
+                <li>
+                  <span className="text-ivory/50">Piece —</span> {piece}
+                </li>
+              )}
+              <li>
+                <span className="text-ivory/50">Metal —</span> {metal}
+              </li>
+              <li>
+                <span className="text-ivory/50">Shape —</span> {shape}
+              </li>
+              <li>
+                <span className="text-ivory/50">Size —</span> {size}
+              </li>
+              {engraving && (
+                <li>
+                  <span className="text-ivory/50">Engraving —</span> "{engraving}"
+                </li>
+              )}
               {imageFile && (
                 <li className="flex items-center gap-2">
                   <span className="text-ivory/50">Reference —</span>
@@ -279,7 +316,15 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-function Option({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
+function Option({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
   return (
     <button
       type="button"

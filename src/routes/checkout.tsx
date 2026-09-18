@@ -37,7 +37,10 @@ function Checkout() {
           <ShoppingBag className="mx-auto h-12 w-12 text-champagne/40" strokeWidth={1} />
           <h1 className="mt-6 font-serif text-3xl text-ivory">Your cart is empty</h1>
           <p className="mt-3 text-sm text-ivory/60">Add some pieces before submitting a request.</p>
-          <Link to="/collections" className="mt-8 inline-flex items-center gap-2 text-sm text-champagne hover:text-ivory transition-colors">
+          <Link
+            to="/collections"
+            className="mt-8 inline-flex items-center gap-2 text-sm text-champagne hover:text-ivory transition-colors"
+          >
             <ArrowLeft className="h-4 w-4" /> Browse collections
           </Link>
         </div>
@@ -45,7 +48,8 @@ function Checkout() {
     );
   }
 
-  const inputCls = "w-full border border-input bg-transparent px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-champagne outline-none";
+  const inputCls =
+    "w-full border border-input bg-transparent px-4 py-3 text-sm text-ivory placeholder:text-ivory/40 focus:border-champagne outline-none";
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -89,19 +93,45 @@ function Checkout() {
   return (
     <div className="pt-32 pb-24">
       <div className="mx-auto max-w-[700px] px-6 lg:px-10">
-        <Link to="/cart" className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-champagne hover:text-ivory transition-colors">
+        <Link
+          to="/cart"
+          className="inline-flex items-center gap-2 text-xs tracking-widest uppercase text-champagne hover:text-ivory transition-colors"
+        >
           <ArrowLeft className="h-3.5 w-3.5" /> Back to cart
         </Link>
 
         <h1 className="mt-6 font-serif text-4xl text-ivory">Submit your request</h1>
-        <p className="mt-2 text-sm text-ivory/60">We'll reach out on WhatsApp within 24 hours to confirm your design details, pricing and timeline.</p>
+        <p className="mt-2 text-sm text-ivory/60">
+          We'll reach out on WhatsApp within 24 hours to confirm your design details, pricing and
+          timeline.
+        </p>
 
         <form onSubmit={submit} className="mt-10 space-y-6">
           <div className="space-y-4">
             <p className="text-xs tracking-[0.2em] uppercase text-champagne/70">Your details</p>
-            <input ref={nameRef} required className={inputCls} placeholder="Full name" defaultValue="" />
-            <input ref={emailRef} required type="email" className={inputCls} placeholder="Email" defaultValue="" />
-            <input ref={phoneRef} required type="tel" className={inputCls} placeholder="Phone number" defaultValue="" />
+            <input
+              ref={nameRef}
+              required
+              className={inputCls}
+              placeholder="Full name"
+              defaultValue=""
+            />
+            <input
+              ref={emailRef}
+              required
+              type="email"
+              className={inputCls}
+              placeholder="Email"
+              defaultValue=""
+            />
+            <input
+              ref={phoneRef}
+              required
+              type="tel"
+              className={inputCls}
+              placeholder="Phone number"
+              defaultValue=""
+            />
           </div>
 
           <div className="space-y-3">
@@ -111,7 +141,9 @@ function Checkout() {
                 <div key={item.variantSku} className="flex justify-between gap-4 px-4 py-3 text-sm">
                   <div>
                     <p className="text-ivory">{item.productName}</p>
-                    <p className="text-xs text-champagne/60">{item.metal} × {item.quantity}</p>
+                    <p className="text-xs text-champagne/60">
+                      {item.metal} × {item.quantity}
+                    </p>
                   </div>
                   <p className="text-ivory shrink-0">{formatPrice(item.price * item.quantity)}</p>
                 </div>
@@ -128,7 +160,13 @@ function Checkout() {
             disabled={busy}
             className="w-full bg-champagne px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-primary-foreground transition-all hover:bg-ivory disabled:opacity-60"
           >
-            {busy ? <span className="inline-flex items-center gap-2"><LoaderCircle className="h-4 w-4 animate-spin" /> Submitting...</span> : "Submit Request"}
+            {busy ? (
+              <span className="inline-flex items-center gap-2">
+                <LoaderCircle className="h-4 w-4 animate-spin" /> Submitting...
+              </span>
+            ) : (
+              "Submit Request"
+            )}
           </button>
 
           <p className="text-center text-xs text-ivory/40">

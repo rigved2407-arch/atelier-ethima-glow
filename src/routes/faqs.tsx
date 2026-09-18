@@ -6,10 +6,22 @@ export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: [
       { title: "FAQs — Lab-Grown Diamond Jewellery Care & Orders | ethima" },
-      { name: "description", content: "Find answers about ethima's delivery timeline, customisation, metals, diamond certification, repairs, returns, and jewellery care." },
-      { name: "keywords", content: "jewellery faqs, lab grown diamond care, ethima returns, jewellery customisation india, diamond certification" },
+      {
+        name: "description",
+        content:
+          "Find answers about ethima's delivery timeline, customisation, metals, diamond certification, repairs, returns, and jewellery care.",
+      },
+      {
+        name: "keywords",
+        content:
+          "jewellery faqs, lab grown diamond care, ethima returns, jewellery customisation india, diamond certification",
+      },
       { property: "og:title", content: "FAQs — ethima" },
-      { property: "og:description", content: "Everything you need to know about ordering, caring for, and customising your ethima jewellery." },
+      {
+        property: "og:description",
+        content:
+          "Everything you need to know about ordering, caring for, and customising your ethima jewellery.",
+      },
       { name: "robots", content: "index, follow" },
     ],
     links: [{ rel: "canonical", href: "https://ethima.in/faqs" }],
@@ -61,7 +73,10 @@ function FAQs() {
         ))}
       </div>
       <div className="mt-16">
-        <a href="/contact" className="inline-flex items-center border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all">
+        <a
+          href="/contact"
+          className="inline-flex items-center border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-champagne hover:bg-champagne hover:text-primary-foreground transition-all"
+        >
           Still have questions? Contact us
         </a>
       </div>

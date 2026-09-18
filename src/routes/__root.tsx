@@ -113,6 +113,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { AuthProvider } from "@/hooks/use-auth";
 import { CartProvider } from "@/hooks/use-cart";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 function WhatsAppButton() {
   const phone = "918347867232";
@@ -196,6 +197,7 @@ function RootComponent() {
           <SiteFooter />
           <Toaster theme="dark" position="top-center" />
           <WhatsAppButton />
+          <Analytics />
         </CartProvider>
       </AuthProvider>
     </QueryClientProvider>
