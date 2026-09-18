@@ -11,7 +11,10 @@ type Ctx = {
 };
 
 const AuthCtx = createContext<Ctx>({
-  user: null, session: null, loading: true, isAdmin: false,
+  user: null,
+  session: null,
+  loading: true,
+  isAdmin: false,
   signOut: async () => {},
 });
 
@@ -22,36 +25,62 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, s) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_e, s) => {
       setSession(s);
       setUser(s?.user ?? null);
       if (s?.user) {
         setTimeout(async () => {
           try {
-            const { data } = await supabase.from("user_roles").select("role").eq("user_id", s.user.id);
+            const { data } = await supabase
+              .from("user_roles")
+              .select("role")
+              .eq("user_id", s.user.id);
             setIsAdmin((data ?? []).some((r) => r.role === "admin"));
-          } catch { setIsAdmin(false); }
+          } catch {
+            setIsAdmin(false);
+          }
         }, 0);
       } else {
         setIsAdmin(false);
       }
     });
 
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
-      setSession(s);
-      setUser(s?.user ?? null);
-      if (s?.user) {
-        supabase.from("user_roles").select("role").eq("user_id", s.user.id).then(({ data }) => {
-          setIsAdmin((data ?? []).some((r) => r.role === "admin"));
-        }).catch(() => setIsAdmin(false));
-      }
-    }).catch(() => {}).finally(() => setLoading(false));
+    supabase.auth
+      .getSession()
+      .then(({ data: { session: s } }) => {
+        setSession(s);
+        setUser(s?.user ?? null);
+        if (s?.user) {
+          supabase
+            .from("user_roles")
+            .select("role")
+            .eq("user_id", s.user.id)
+            .then(({ data }) => {
+              setIsAdmin((data ?? []).some((r) => r.role === "admin"));
+            })
+            .catch(() => setIsAdmin(false));
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
 
     return () => subscription.unsubscribe();
   }, []);
 
   return (
-    <AuthCtx.Provider value={{ user, session, loading, isAdmin, signOut: async () => { await supabase.auth.signOut(); } }}>
+    <AuthCtx.Provider
+      value={{
+        user,
+        session,
+        loading,
+        isAdmin,
+        signOut: async () => {
+          await supabase.auth.signOut();
+        },
+      }}
+    >
       {children}
     </AuthCtx.Provider>
   );

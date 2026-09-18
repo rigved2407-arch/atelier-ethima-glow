@@ -5,11 +5,23 @@ export const Route = createFileRoute("/education")({
   head: () => ({
     meta: [
       { title: "Education — Lab-Grown Diamonds & Customisation | ethima" },
-      { name: "description", content: "Learn about lab-grown diamonds, IGI/GIA/SGL certification, metal choices, diamond shapes and jewellery care. Your complete guide from ethima." },
-      { name: "keywords", content: "lab grown diamonds explained, IGI certified diamonds india, diamond shapes guide, jewellery care tips, 10kt gold vs silver" },
+      {
+        name: "description",
+        content:
+          "Learn about lab-grown diamonds, IGI/GIA/SGL certification, metal choices, diamond shapes and jewellery care. Your complete guide from ethima.",
+      },
+      {
+        name: "keywords",
+        content:
+          "lab grown diamonds explained, IGI certified diamonds india, diamond shapes guide, jewellery care tips, 10kt gold vs silver",
+      },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "ethima Education — Lab-Grown Diamonds & Customisation" },
-      { property: "og:description", content: "Everything you need to know about lab-grown diamonds and personalising your piece." },
+      {
+        property: "og:description",
+        content:
+          "Everything you need to know about lab-grown diamonds and personalising your piece.",
+      },
       { property: "og:url", content: "https://ethima.in/education" },
     ],
     links: [{ rel: "canonical", href: "https://ethima.in/education" }],
@@ -87,7 +99,9 @@ function Education() {
             <h3 className="font-serif text-xl text-ivory md:text-2xl">{q}</h3>
             <div className="space-y-3">
               {a.map((para, i) => (
-                <p key={i} className="text-sm leading-relaxed text-ivory/70">{para}</p>
+                <p key={i} className="text-sm leading-relaxed text-ivory/70">
+                  {para}
+                </p>
               ))}
             </div>
           </div>
@@ -95,10 +109,16 @@ function Education() {
       </div>
 
       <div className="mt-20 flex flex-wrap gap-4">
-        <Link to="/customise" className="inline-flex items-center bg-champagne px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-primary-foreground hover:bg-ivory transition-all">
+        <Link
+          to="/customise"
+          className="inline-flex items-center bg-champagne px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-primary-foreground hover:bg-ivory transition-all"
+        >
           Start Your Piece
         </Link>
-        <Link to="/consultation" className="inline-flex items-center border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-ivory hover:bg-champagne hover:text-primary-foreground transition-all">
+        <Link
+          to="/consultation"
+          className="inline-flex items-center border border-champagne/60 px-7 py-4 text-[0.7rem] tracking-[0.28em] uppercase text-ivory hover:bg-champagne hover:text-primary-foreground transition-all"
+        >
           Book Consultation
         </Link>
       </div>

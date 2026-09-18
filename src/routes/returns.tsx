@@ -5,10 +5,22 @@ export const Route = createFileRoute("/returns")({
   head: () => ({
     meta: [
       { title: "Returns, Repairs & Warranty — ethima" },
-      { name: "description", content: "ethima's returns, repairs, warranty and upgrade program for lab-grown diamond jewellery. 6-month craftsmanship warranty included with every piece." },
-      { name: "keywords", content: "jewellery returns india, jewellery warranty, jewellery repair, ethima returns policy, diamond jewellery care" },
+      {
+        name: "description",
+        content:
+          "ethima's returns, repairs, warranty and upgrade program for lab-grown diamond jewellery. 6-month craftsmanship warranty included with every piece.",
+      },
+      {
+        name: "keywords",
+        content:
+          "jewellery returns india, jewellery warranty, jewellery repair, ethima returns policy, diamond jewellery care",
+      },
       { property: "og:title", content: "Returns, Repairs & Warranty — ethima" },
-      { property: "og:description", content: "Learn about ethima's return policy, 6-month craftsmanship warranty, repair services and upgrade program." },
+      {
+        property: "og:description",
+        content:
+          "Learn about ethima's return policy, 6-month craftsmanship warranty, repair services and upgrade program.",
+      },
       { name: "robots", content: "index, follow" },
     ],
     links: [{ rel: "canonical", href: "https://ethima.in/returns" }],
@@ -18,11 +30,12 @@ export const Route = createFileRoute("/returns")({
 
 function Returns() {
   return (
-    <PageShell eyebrow="Policy" title="Returns, Repairs & Warranty."
-      intro="At ethima, every piece is thoughtfully created with care and often made-to-order. Due to the personalised nature of fine jewellery, returns are accepted only in limited circumstances.">
-
+    <PageShell
+      eyebrow="Policy"
+      title="Returns, Repairs & Warranty."
+      intro="At ethima, every piece is thoughtfully created with care and often made-to-order. Due to the personalised nature of fine jewellery, returns are accepted only in limited circumstances."
+    >
       <section className="space-y-px">
-
         <div className="grid gap-6 border-t border-border py-10 md:grid-cols-[2fr_3fr]">
           <h2 className="font-serif text-2xl text-ivory">Returns & Exchanges</h2>
           <div className="space-y-4 text-sm leading-relaxed text-ivory/70">
@@ -36,7 +49,10 @@ function Returns() {
             </div>
             <div>
               <p className="text-ivory/90 font-light mb-2">Return Request Window</p>
-              <p>Return requests must be submitted within 48 hours of delivery, along with clear photos or videos for review.</p>
+              <p>
+                Return requests must be submitted within 48 hours of delivery, along with clear
+                photos or videos for review.
+              </p>
             </div>
             <div>
               <p className="text-ivory/90 font-light mb-2">Non-Returnable Items</p>
@@ -48,14 +64,20 @@ function Returns() {
                 <li>Preference-based returns or cancellations after production begins</li>
               </ul>
             </div>
-            <p>Approved requests may qualify for a repair, replacement, or store credit depending on the situation.</p>
+            <p>
+              Approved requests may qualify for a repair, replacement, or store credit depending on
+              the situation.
+            </p>
           </div>
         </div>
 
         <div className="grid gap-6 border-t border-border py-10 md:grid-cols-[2fr_3fr]">
           <h2 className="font-serif text-2xl text-ivory">Repairs & Care</h2>
           <div className="space-y-4 text-sm leading-relaxed text-ivory/70">
-            <p>We want your ethima jewellery to be worn and loved for years. If your piece requires repair or servicing, our team will be happy to assist.</p>
+            <p>
+              We want your ethima jewellery to be worn and loved for years. If your piece requires
+              repair or servicing, our team will be happy to assist.
+            </p>
             <div>
               <p className="text-ivory/90 font-light mb-2">Repair Support Includes</p>
               <ul className="space-y-1 list-disc list-inside">
@@ -103,14 +125,19 @@ function Returns() {
                 <li>Water, perfume, or chemical damage</li>
               </ul>
             </div>
-            <p>ethima reserves the right to assess whether a repair falls within warranty coverage.</p>
+            <p>
+              ethima reserves the right to assess whether a repair falls within warranty coverage.
+            </p>
           </div>
         </div>
 
         <div className="grid gap-6 border-t border-border py-10 md:grid-cols-[2fr_3fr]">
           <h2 className="font-serif text-2xl text-ivory">Upgrade Program</h2>
           <div className="space-y-4 text-sm leading-relaxed text-ivory/70">
-            <p>We believe fine jewellery should evolve with you. ethima offers an upgrade program for select pieces.</p>
+            <p>
+              We believe fine jewellery should evolve with you. ethima offers an upgrade program for
+              select pieces.
+            </p>
             <div>
               <p className="text-ivory/90 font-light mb-2">Upgrade Eligibility</p>
               <ul className="space-y-1 list-disc list-inside">
@@ -129,7 +156,6 @@ function Returns() {
             </div>
           </div>
         </div>
-
       </section>
     </PageShell>
   );
