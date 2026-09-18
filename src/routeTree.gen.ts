@@ -9,29 +9,54 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ReturnsRouteImport } from './routes/returns'
 import { Route as ProcessRouteImport } from './routes/process'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as EducationRouteImport } from './routes/education'
 import { Route as CustomiseRouteImport } from './routes/customise'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConsultationRouteImport } from './routes/consultation'
 import { Route as CollectionsRouteImport } from './routes/collections'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CartRouteImport } from './routes/cart'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as CheckoutRouteImport } from './routes/checkout'
-import { Route as ThankYouRouteImport } from './routes/thank-you'
-import { Route as Products$slugRouteImport } from './routes/products.$slug'
-import { Route as CartRouteImport } from './routes/cart'
-import { Route as FaqsRouteImport } from './routes/faqs'
-import { Route as ReturnsRouteImport } from './routes/returns'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as TermsRouteImport } from './routes/terms'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReturnsRoute = ReturnsRouteImport.update({
+  id: '/returns',
+  path: '/returns',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProcessRoute = ProcessRouteImport.update({
   id: '/process',
   path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EducationRoute = EducationRouteImport.update({
@@ -59,6 +84,16 @@ const CollectionsRoute = CollectionsRouteImport.update({
   path: '/collections',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -79,62 +114,20 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheckoutRoute = CheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ThankYouRoute = ThankYouRouteImport.update({
-  id: '/thank-you',
-  path: '/thank-you',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-
-const Products$slugRoute = Products$slugRouteImport.update({
+const ProductsSlugRoute = ProductsSlugRouteImport.update({
   id: '/products/$slug',
   path: '/products/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-
-const CartRoute = CartRouteImport.update({
-  id: '/cart',
-  path: '/cart',
-  getParentRoute: () => rootRouteImport,
-} as any)
-
-const FaqsRoute = FaqsRouteImport.update({
-  id: '/faqs',
-  path: '/faqs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-
-const ReturnsRoute = ReturnsRouteImport.update({
-  id: '/returns',
-  path: '/returns',
-  getParentRoute: () => rootRouteImport,
-} as any)
-
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/products/$slug': typeof Products$slugRoute
   '/account': typeof AccountRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
@@ -151,11 +144,11 @@ export interface FileRoutesByFullPath {
   '/returns': typeof ReturnsRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/products/$slug': typeof Products$slugRoute
   '/account': typeof AccountRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
@@ -172,12 +165,12 @@ export interface FileRoutesByTo {
   '/returns': typeof ReturnsRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/products/$slug': typeof Products$slugRoute
   '/account': typeof AccountRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
@@ -194,6 +187,7 @@ export interface FileRoutesById {
   '/returns': typeof ReturnsRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/products/$slug': typeof ProductsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -213,10 +207,10 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/privacy'
     | '/process'
-    | '/products/$slug'
     | '/returns'
     | '/terms'
     | '/thank-you'
+    | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -234,10 +228,10 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/privacy'
     | '/process'
-    | '/products/$slug'
     | '/returns'
     | '/terms'
     | '/thank-you'
+    | '/products/$slug'
   id:
     | '__root__'
     | '/'
@@ -255,16 +249,15 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/privacy'
     | '/process'
-    | '/products/$slug'
     | '/returns'
     | '/terms'
     | '/thank-you'
+    | '/products/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  Products$slugRoute: typeof Products$slugRoute
   AccountRoute: typeof AccountRoute
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
@@ -281,15 +274,16 @@ export interface RootRouteChildren {
   ReturnsRoute: typeof ReturnsRoute
   TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
+  ProductsSlugRoute: typeof ProductsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/products/$slug': {
-      id: '/products/$slug'
-      path: '/products/$slug'
-      fullPath: '/products/$slug'
-      preLoaderRoute: typeof Products$slugRouteImport
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -355,18 +349,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsultationRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/checkout': {
-      id: '/checkout'
-      path: '/checkout'
-      fullPath: '/checkout'
-      preLoaderRoute: typeof CheckoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/collections': {
       id: '/collections'
       path: '/collections'
       fullPath: '/collections'
       preLoaderRoute: typeof CollectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -381,13 +375,6 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/thank-you': {
-      id: '/thank-you'
-      path: '/thank-you'
-      fullPath: '/thank-you'
-      preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -418,13 +405,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/$slug': {
+      id: '/products/$slug'
+      path: '/products/$slug'
+      fullPath: '/products/$slug'
+      preLoaderRoute: typeof ProductsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  Products$slugRoute: Products$slugRoute,
   AccountRoute: AccountRoute,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
@@ -441,7 +434,18 @@ const rootRouteChildren: RootRouteChildren = {
   ReturnsRoute: ReturnsRoute,
   TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
+  ProductsSlugRoute: ProductsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
