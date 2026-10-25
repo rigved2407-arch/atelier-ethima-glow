@@ -1,0 +1,17 @@
+{
+  "routes": [
+    { "path": "/", "title": "Personalised Lab-Grown Diamond Jewellery in India | ethima" },
+    { "path": "/collections", "title": "Shop Lab-Grown Diamond Jewellery | ethima Collections" },
+    { "path": "/customise", "title": "Custom Diamond Jewellery Design in India | ethima" },
+    { "path": "/consultation", "title": "Book a Personalised Jewellery Consultation | ethima" },
+    { "path": "/process", "title": "How Custom Jewellery Is Made | ethima" },
+    { "path": "/education", "title": "Lab-Grown Diamonds Guide | ethima Jewellery Education" },
+    { "path": "/about", "title": "About ethima | Personalised Fine Jewellery in India" },
+    { "path": "/contact", "title": "Contact ethima Jewellery Studio | India" },
+    { "path": "/faqs", "title": "Jewellery FAQs | ethima" },
+    { "path": "/returns", "title": "Returns & Jewellery Policies | ethima" },
+    { "path": "/privacy", "title": "Privacy Policy | ethima" },
+    { "path": "/terms", "title": "Terms of Service | ethima" },
+    { "path": "/products/:slug", "title": "Product detail" }
+  ]
+}
