@@ -4,7 +4,7 @@ export interface ProductVariant {
   weight: string
   diamondDetails: string
   totalCarat: number
-  price: number
+  price: number | null
 }
 
 export interface Product {
@@ -408,6 +408,184 @@ export const PRODUCTS: Product[] = [
       },
     ],
   },
+  {
+    id: "ETH-RG-004",
+    slug: "outer-coordinates-ring",
+    name: "Outer Coordinates Ring",
+    category: "rings",
+    collection: "The Personal Edit",
+    description:
+      "A polished gold ring engraved with meaningful coordinates and finished with a single lab-grown diamond accent. A personal keepsake designed to carry a place close to you.",
+    shortDescription: "A coordinate-engraved ring with a delicate diamond accent.",
+    designType: "Coordinate band ring",
+    stoneType: "Lab-grown diamond",
+    stoneShapeOptions: "Round, 1.20 mm",
+    sizeOptions: "Ring sizes available by enquiry",
+    customizable: true,
+    inventoryModel: "Made-to-order",
+    launchPriority: "Launch 2",
+    primaryChannel: "Website + consultation",
+    notes: "Owner master-sheet Website Prices applied; only gold imagery is supplied for this design.",
+    images: {
+      gold: [
+        "/products/outer-coordinates-ring/gold-01.webp",
+        "/products/outer-coordinates-ring/gold-02.webp",
+        "/products/outer-coordinates-ring/gold-03.webp",
+        "/products/outer-coordinates-ring/gold-04.webp",
+        "/products/outer-coordinates-ring/gold-05.webp",
+        "/products/outer-coordinates-ring/gold-06.webp",
+        "/products/outer-coordinates-ring/gold-07.webp",
+        "/products/outer-coordinates-ring/gold-08.webp",
+      ],
+    },
+    variants: [
+      {
+        sku: "ETH-RG-004-SIL",
+        metal: "925 Silver",
+        weight: "1.98 gms",
+        diamondDetails: "1.20 mm x 1 pc",
+        totalCarat: 0.007,
+        price: 5000,
+      },
+      {
+        sku: "ETH-RG-004-VRM",
+        metal: "Gold Vermeil on 925 Silver",
+        weight: "1.98 gms",
+        diamondDetails: "1.20 mm x 1 pc",
+        totalCarat: 0.007,
+        price: 5700,
+      },
+      {
+        sku: "ETH-RG-004-10K",
+        metal: "10KT Gold",
+        weight: "2.2 gms",
+        diamondDetails: "1.20 mm x 1 pc",
+        totalCarat: 0.007,
+        price: 22800,
+      },
+    ],
+  },
+  {
+    id: "ETH-RG-005",
+    slug: "serpine-ring",
+    name: "Serpine Ring",
+    category: "rings",
+    collection: "The ethima Edit",
+    description:
+      "Fluid, serpentine curves meet a striking marquise-cut lab-grown diamond in this sculptural ring. Its flowing silhouette brings a distinctive, modern finish to an elegant statement piece.",
+    shortDescription: "A flowing sculptural ring with a marquise diamond centrepiece.",
+    designType: "Sculptural wrap ring",
+    stoneType: "Lab-grown diamond",
+    stoneShapeOptions: "Marquise, 8.00 x 4.00 mm",
+    sizeOptions: "Ring sizes available by enquiry",
+    customizable: false,
+    inventoryModel: "Made-to-order",
+    launchPriority: "Launch 2",
+    primaryChannel: "Website + consultation",
+    notes:
+      "Owner master-sheet Website Prices applied. Weight is provisional per sheet: 3.0 g target versus 5.5 g CAD weight; manufacturing confirmation required.",
+    images: {
+      silver: [
+        "/products/serpine-ring/silver-01.webp",
+        "/products/serpine-ring/silver-02.webp",
+        "/products/serpine-ring/silver-03.webp",
+        "/products/serpine-ring/silver-04.webp",
+        "/products/serpine-ring/silver-05.webp",
+        "/products/serpine-ring/silver-06.webp",
+      ],
+      gold: [
+        "/products/serpine-ring/gold-01.webp",
+        "/products/serpine-ring/gold-02.webp",
+        "/products/serpine-ring/gold-03.webp",
+        "/products/serpine-ring/gold-04.webp",
+        "/products/serpine-ring/gold-05.webp",
+        "/products/serpine-ring/gold-06.webp",
+      ],
+    },
+    variants: [
+      {
+        sku: "ETH-RG-005-SIL",
+        metal: "925 Silver",
+        weight: "2.7 gms (provisional; confirm with designer)",
+        diamondDetails: "Marquise 8.00 x 4.00 mm x 1 pc",
+        totalCarat: 0.42,
+        price: 12600,
+      },
+      {
+        sku: "ETH-RG-005-VRM",
+        metal: "Gold Vermeil on 925 Silver",
+        weight: "2.7 gms (provisional; confirm with designer)",
+        diamondDetails: "Marquise 8.00 x 4.00 mm x 1 pc",
+        totalCarat: 0.42,
+        price: 13600,
+      },
+      {
+        sku: "ETH-RG-005-10K",
+        metal: "10KT Gold",
+        weight: "3.0 gms (provisional; CAD shows 5.5 gms)",
+        diamondDetails: "Marquise 8.00 x 4.00 mm x 1 pc",
+        totalCarat: 0.42,
+        price: 36400,
+      },
+    ],
+  },
+  {
+    id: "ETH-RG-006",
+    slug: "double-loop-ring",
+    name: "Double Loop Ring",
+    category: "rings",
+    collection: "The ethima Edit",
+    description:
+      "A pair of graceful gold loops entwines around a diamond-set band, creating a dimensional ring with an effortless sense of movement. Lab-grown diamonds add a fine line of light to this bold yet refined design.",
+    shortDescription: "Intertwined gold loops meet a sparkling diamond-set band.",
+    designType: "Double-loop pavé ring",
+    stoneType: "Lab-grown diamonds",
+    stoneShapeOptions: "Round, 2.00 mm",
+    sizeOptions: "Ring sizes available by enquiry",
+    customizable: false,
+    inventoryModel: "Made-to-order",
+    launchPriority: "Launch 2",
+    primaryChannel: "Website + consultation",
+    notes: "Owner master-sheet Website Prices applied; only gold imagery is supplied for this design.",
+    images: {
+      gold: [
+        "/products/double-loop-ring/gold-01.webp",
+        "/products/double-loop-ring/gold-02.webp",
+        "/products/double-loop-ring/gold-03.webp",
+        "/products/double-loop-ring/gold-04.webp",
+        "/products/double-loop-ring/gold-05.webp",
+        "/products/double-loop-ring/gold-06.webp",
+        "/products/double-loop-ring/gold-07.webp",
+        "/products/double-loop-ring/gold-08.webp",
+      ],
+    },
+    variants: [
+      {
+        sku: "ETH-RG-006-SIL",
+        metal: "925 Silver",
+        weight: "3.15 gms",
+        diamondDetails: "Round 2.00 mm x 15 pcs",
+        totalCarat: 0.45,
+        price: 9900,
+      },
+      {
+        sku: "ETH-RG-006-VRM",
+        metal: "Gold Vermeil on 925 Silver",
+        weight: "3.15 gms",
+        diamondDetails: "Round 2.00 mm x 15 pcs",
+        totalCarat: 0.45,
+        price: 11000,
+      },
+      {
+        sku: "ETH-RG-006-10K",
+        metal: "10KT Gold",
+        weight: "3.5 gms",
+        diamondDetails: "Round 2.00 mm x 15 pcs",
+        totalCarat: 0.45,
+        price: 37500,
+      },
+    ],
+  },
 ]
 
 export function getProductsByCategory(category: string): Product[] {
@@ -418,7 +596,7 @@ export function getProductsByCategory(category: string): Product[] {
 export function getProductsByCollection(collectionSlug: string): Product[] {
   if (!collectionSlug || collectionSlug === "all") return PRODUCTS
   const collectionMap: Record<string, string[]> = {
-    "ethima-edit": ["The Everyday Edit", "The ethima Signature"],
+    "ethima-edit": ["The Everyday Edit", "The ethima Signature", "The ethima Edit"],
     "personal-edit": ["The Personal Edit"],
   }
   const collections = collectionMap[collectionSlug]
@@ -428,6 +606,13 @@ export function getProductsByCollection(collectionSlug: string): Product[] {
 
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug)
+}
+
+export function getStartingPrice(product: Product): number | null {
+  const prices = product.variants.flatMap((variant) =>
+    variant.price === null ? [] : [variant.price],
+  )
+  return prices.length ? Math.min(...prices) : null
 }
 
 export function formatPrice(price: number): string {

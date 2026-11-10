@@ -1,6 +1,11 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
-import { getProductsByCategory, getProductsByCollection, formatPrice } from "@/data/products";
+import {
+  getProductsByCategory,
+  getProductsByCollection,
+  getStartingPrice,
+  formatPrice,
+} from "@/data/products";
 import { JsonLd, breadcrumbJsonLd, itemListJsonLd } from "@/components/seo";
 
 const COLLECTIONS = [
@@ -162,7 +167,7 @@ function Collections() {
           const images = product.images;
           const allImages = Object.values(images).flat();
           const heroImage = allImages[0] || "";
-          const minPrice = Math.min(...product.variants.map((v) => v.price));
+          const minPrice = getStartingPrice(product);
 
           return (
             <Link
@@ -199,7 +204,7 @@ function Collections() {
                   {product.shortDescription}
                 </p>
                 <p className="mt-2 text-sm text-champagne font-medium tracking-wide">
-                  from {formatPrice(minPrice)}
+                  {minPrice === null ? "Price on request" : `from ${formatPrice(minPrice)}`}
                 </p>
               </div>
             </Link>

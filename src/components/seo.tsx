@@ -63,7 +63,7 @@ export function productJsonLd(product: {
   image: string;
   sku: string;
   slug: string;
-  price: number;
+  price: number | null;
   category: string;
   brand?: string;
 }) {
@@ -78,14 +78,16 @@ export function productJsonLd(product: {
     category: product.category,
     brand: { "@type": "Brand", name: product.brand || ORG_NAME },
     url: productUrl,
-    offers: {
-      "@type": "Offer",
-      url: productUrl,
-      price: product.price.toFixed(2),
-      priceCurrency: "INR",
-      availability: "https://schema.org/MadeToOrder",
-      itemCondition: "https://schema.org/NewCondition",
-    },
+    ...(product.price !== null && {
+      offers: {
+        "@type": "Offer",
+        url: productUrl,
+        price: product.price.toFixed(2),
+        priceCurrency: "INR",
+        availability: "https://schema.org/MadeToOrder",
+        itemCondition: "https://schema.org/NewCondition",
+      },
+    }),
   };
 }
 

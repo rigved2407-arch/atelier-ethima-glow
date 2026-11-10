@@ -13,7 +13,7 @@ import {
 import heroRing from "@/assets/hero-ring.jpg";
 import handImg from "@/assets/process-hand.jpg";
 import sketchImg from "@/assets/journey-sketch.jpg";
-import { PRODUCTS, formatPrice } from "@/data/products";
+import { PRODUCTS, formatPrice, getStartingPrice } from "@/data/products";
 import { SITE_URL_CONST } from "@/components/seo";
 
 export const Route = createFileRoute("/")({
@@ -394,7 +394,7 @@ function ProductsCarousel() {
 
   const items = PRODUCTS.map((p) => {
     const img = p.images.silver?.[0] || p.images.gold?.[0] || "";
-    const minPrice = Math.min(...p.variants.map((v) => v.price));
+    const minPrice = getStartingPrice(p);
     return { slug: p.slug, name: p.name, img, minPrice };
   });
 
@@ -543,7 +543,11 @@ function ProductsCarousel() {
               </div>
               <div className="mt-4 px-1">
                 <p className="text-sm text-ivory/90 truncate">{item.name}</p>
-                <p className="mt-1 text-xs text-champagne/80">from {formatPrice(item.minPrice)}</p>
+                <p className="mt-1 text-xs text-champagne/80">
+                  {item.minPrice === null
+                    ? "Price on request"
+                    : `from ${formatPrice(item.minPrice)}`}
+                </p>
               </div>
             </Link>
           ))}

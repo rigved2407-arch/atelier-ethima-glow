@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { getProductBySlug, formatPrice } from "@/data/products";
+import { getProductBySlug, getStartingPrice, formatPrice } from "@/data/products";
 import { useCart } from "@/hooks/use-cart";
 import { useState } from "react";
 import { ArrowLeft, ShoppingCart, Check } from "lucide-react";
@@ -15,24 +15,28 @@ export const Route = createFileRoute("/products/$slug")({
   head: ({ loaderData }) => {
     const allImages = Object.values(loaderData.images).flat();
     const heroImage = allImages[0] ? `https://ethima.in${allImages[0]}` : undefined;
-    const minPrice = Math.min(...loaderData.variants.map((v) => v.price));
+    const minPrice = getStartingPrice(loaderData);
     const keywords = `${loaderData.name}, ${loaderData.category}, lab grown diamond jewellery, ${loaderData.variants.map((v) => v.metal).join(", ")}, ethima`;
     const metaTags: Record<string, string>[] = [
       { title: `${loaderData.name} — ${loaderData.shortDescription} | ethima` },
       {
         name: "description",
-        content: `${loaderData.name} — ${loaderData.shortDescription}. ${loaderData.stoneType}. Available in ${loaderData.variants.map((v) => v.metal).join(", ")}. Starting from ₹${minPrice.toLocaleString("en-IN")}. Made to order.`,
+        content: `${loaderData.name} — ${loaderData.shortDescription}. ${loaderData.stoneType}. Available in ${loaderData.variants.map((v) => v.metal).join(", ")}. ${minPrice === null ? "Price on request." : `Starting from ₹${minPrice.toLocaleString("en-IN")}.`} Made to order.`,
       },
       { name: "keywords", content: keywords },
       { property: "og:title", content: `${loaderData.name} — ethima` },
       {
         property: "og:description",
-        content: `${loaderData.shortDescription} Starting from ₹${minPrice.toLocaleString("en-IN")}.`,
+        content: `${loaderData.shortDescription} ${minPrice === null ? "Price on request." : `Starting from ₹${minPrice.toLocaleString("en-IN")}.`}`,
       },
       { property: "og:url", content: `https://ethima.in/products/${loaderData.slug}` },
       { property: "og:type", content: "product" },
-      { property: "product:price:amount", content: String(minPrice) },
-      { property: "product:price:currency", content: "INR" },
+      ...(minPrice === null
+        ? []
+        : [
+            { property: "product:price:amount", content: String(minPrice) },
+            { property: "product:price:currency", content: "INR" },
+          ]),
       { name: "robots", content: "index, follow" },
     ];
     if (heroImage) {
@@ -75,10 +79,12 @@ function ProductDetail() {
     : variant.metal.includes("Gold")
       ? "gold"
       : "silver";
+  const hasMetalImages = Boolean(product.images[metalKey]?.length);
   const metalImages = product.images[metalKey] || product.images["default"] || allImages;
   const currentImages = metalImages.length > 0 ? metalImages : allImages;
 
   const handleAddToCart = () => {
+    if (variant.price === null) return;
     addItem({
       variantSku: variant.sku,
       productSlug: product.slug,
@@ -94,7 +100,7 @@ function ProductDetail() {
   };
 
   const heroImageUrl = allImages[0] ? `https://ethima.in${allImages[0]}` : "";
-  const minPrice = Math.min(...product.variants.map((v) => v.price));
+  const minPrice = getStartingPrice(product);
 
   return (
     <div className="pt-32 pb-24">
@@ -153,6 +159,12 @@ function ProductDetail() {
                   </button>
                 ))}
               </div>
+            )}
+            {!hasMetalImages && (
+              <p className="text-xs text-ivory/50">
+                Gallery shown in {product.images.gold?.length ? "10KT Gold" : "925 Silver"}; images
+                for {variant.metal} are coming soon.
+              </p>
             )}
           </div>
 
@@ -235,39 +247,56 @@ function ProductDetail() {
             </div>
 
             <div className="mt-8 pt-8 border-t border-border">
-              <p className="text-3xl font-serif text-ivory">{formatPrice(variant.price)}</p>
-              <p className="mt-1 text-xs text-ivory/50">Inclusive of all taxes. Made to order.</p>
-              <p className="mt-2 text-[0.55rem] tracking-wide text-ivory/40 leading-relaxed">
-                Each ethima piece is made around you. Final pricing may vary depending on
-                customisations, diamond selection, and metal preferences chosen during the design
-                process.
-              </p>
-
-              <button
-                onClick={handleAddToCart}
-                className={`mt-6 inline-flex w-full items-center justify-center gap-3 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase transition-all ${
-                  added
-                    ? "bg-teal-deep text-ivory"
-                    : "bg-champagne text-primary-foreground hover:bg-ivory"
-                }`}
-              >
-                {added ? (
-                  <>
-                    <Check className="h-4 w-4" /> Added to Cart
-                  </>
-                ) : (
-                  <>
-                    <ShoppingCart className="h-4 w-4" /> Add to Cart
-                  </>
-                )}
-              </button>
-
-              <Link
-                to="/consultation"
-                className="mt-3 inline-flex w-full items-center justify-center border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
-              >
-                Book a Consultation
-              </Link>
+              {variant.price === null ? (
+                <>
+                  <p className="text-3xl font-serif text-ivory">Price on request</p>
+                  <p className="mt-1 text-xs text-ivory/50">
+                    Our team can confirm pricing and availability for this made-to-order design.
+                  </p>
+                  <Link
+                    to="/consultation"
+                    className="mt-6 inline-flex w-full items-center justify-center border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
+                  >
+                    Request Pricing
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <p className="text-3xl font-serif text-ivory">{formatPrice(variant.price)}</p>
+                  <p className="mt-1 text-xs text-ivory/50">
+                    Inclusive of all taxes. Made to order.
+                  </p>
+                  <p className="mt-2 text-[0.55rem] tracking-wide text-ivory/40 leading-relaxed">
+                    Each ethima piece is made around you. Final pricing may vary depending on
+                    customisations, diamond selection, and metal preferences chosen during the
+                    design process.
+                  </p>
+                  <button
+                    onClick={handleAddToCart}
+                    className={`mt-6 inline-flex w-full items-center justify-center gap-3 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase transition-all ${
+                      added
+                        ? "bg-teal-deep text-ivory"
+                        : "bg-champagne text-primary-foreground hover:bg-ivory"
+                    }`}
+                  >
+                    {added ? (
+                      <>
+                        <Check className="h-4 w-4" /> Added to Cart
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingCart className="h-4 w-4" /> Add to Cart
+                      </>
+                    )}
+                  </button>
+                  <Link
+                    to="/consultation"
+                    className="mt-3 inline-flex w-full items-center justify-center border border-champagne/60 px-8 py-4 text-[0.7rem] tracking-[0.32em] uppercase text-ivory transition-all hover:bg-champagne hover:text-primary-foreground"
+                  >
+                    Book a Consultation
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
