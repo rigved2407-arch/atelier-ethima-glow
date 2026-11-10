@@ -415,7 +415,7 @@ export const PRODUCTS: Product[] = [
     category: "rings",
     collection: "The Personal Edit",
     description:
-      "A polished gold ring engraved with meaningful coordinates and finished with a single lab-grown diamond accent. A personal keepsake designed to carry a place close to you.",
+      "A polished ring engraved with meaningful coordinates and finished with a single lab-grown diamond accent. A personal keepsake designed to carry a place close to you.",
     shortDescription: "A coordinate-engraved ring with a delicate diamond accent.",
     designType: "Coordinate band ring",
     stoneType: "Lab-grown diamond",
@@ -425,8 +425,9 @@ export const PRODUCTS: Product[] = [
     inventoryModel: "Made-to-order",
     launchPriority: "Launch 2",
     primaryChannel: "Website + consultation",
-    notes: "Owner master-sheet Website Prices applied; only gold imagery is supplied for this design.",
+    notes: "Owner master-sheet Website Prices applied; silver preview added alongside the gold gallery.",
     images: {
+      silver: ["/products/outer-coordinates-ring/silver-01.webp"],
       gold: [
         "/products/outer-coordinates-ring/gold-01.webp",
         "/products/outer-coordinates-ring/gold-02.webp",
@@ -536,8 +537,8 @@ export const PRODUCTS: Product[] = [
     category: "rings",
     collection: "The ethima Edit",
     description:
-      "A pair of graceful gold loops entwines around a diamond-set band, creating a dimensional ring with an effortless sense of movement. Lab-grown diamonds add a fine line of light to this bold yet refined design.",
-    shortDescription: "Intertwined gold loops meet a sparkling diamond-set band.",
+      "A pair of graceful loops entwines around a diamond-set band, creating a dimensional ring with an effortless sense of movement. Lab-grown diamonds add a fine line of light to this bold yet refined design.",
+    shortDescription: "Intertwined loops meet a sparkling diamond-set band.",
     designType: "Double-loop pavé ring",
     stoneType: "Lab-grown diamonds",
     stoneShapeOptions: "Round, 2.00 mm",
@@ -546,8 +547,9 @@ export const PRODUCTS: Product[] = [
     inventoryModel: "Made-to-order",
     launchPriority: "Launch 2",
     primaryChannel: "Website + consultation",
-    notes: "Owner master-sheet Website Prices applied; only gold imagery is supplied for this design.",
+    notes: "Owner master-sheet Website Prices applied; silver preview added alongside the gold gallery.",
     images: {
+      silver: ["/products/double-loop-ring/silver-01.webp"],
       gold: [
         "/products/double-loop-ring/gold-01.webp",
         "/products/double-loop-ring/gold-02.webp",

@@ -80,7 +80,10 @@ function ProductDetail() {
       ? "gold"
       : "silver";
   const hasMetalImages = Boolean(product.images[metalKey]?.length);
-  const metalImages = product.images[metalKey] || product.images["default"] || allImages;
+  const fallbackImages = product.images.gold?.length
+    ? product.images.gold
+    : product.images.silver || allImages;
+  const metalImages = product.images[metalKey] || product.images["default"] || fallbackImages;
   const currentImages = metalImages.length > 0 ? metalImages : allImages;
 
   const handleAddToCart = () => {
